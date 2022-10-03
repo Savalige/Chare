@@ -5,7 +5,7 @@ namespace API.Data
 {
     public class Database : DbContext
     {
-        public Database(DbContextOptions<Database> options) : base(options) { }
+        public Database(DbContextOptions<Database> options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,20 @@ namespace API.Data
                 .HasOne(p => p.Tr_Pre_Preference)
                 .WithMany(c => c.Pre_TripPreferenceModel)
                 .HasForeignKey(p => p.Pre_Id);
+
+            //Reviews
+            modelBuilder.Entity<ReviewModel>()
+                .HasKey(p => new { p.Re_Rater_Id, p.Re_Rated_Id });
+
+            modelBuilder.Entity<ReviewModel>()
+                .HasOne(p => p.Re_Rater)
+                .WithMany(p => p.Pr_Rater)
+                .HasForeignKey(p => p.Re_Rater_Id);
+
+            modelBuilder.Entity<ReviewModel>()
+                .HasOne(p => p.Re_Rated)
+                .WithMany(c => c.Pr_Rated)
+                .HasForeignKey(p => p.Re_Rated_Id);
         }
 
         public DbSet<ApprovedPassengerModel> ApprovedPassengers { get; set; }

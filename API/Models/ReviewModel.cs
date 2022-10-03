@@ -15,6 +15,8 @@ namespace API.Models
         public string Re_Text { get; set; } = String.Empty;
 
         public ProfileModel Re_Rater { get; set; }
+        public int Re_Rater_Id { get; set; }
         public ProfileModel Re_Rated { get; set; }
+        public int Re_Rated_Id { get; set; }
     }
 }
