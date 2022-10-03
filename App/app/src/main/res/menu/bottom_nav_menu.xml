@@ -11,8 +11,10 @@
         android:icon="@drawable/add_car_outlined"
         android:title="@string/title_create" />
 
-    <item android:title="@string/title_trips"
-        android:icon="@drawable/reciept_outlined"/>
+    <item
+        android:id="@+id/navigation_trips"
+        android:icon="@drawable/reciept_outlined"
+        android:title="@string/title_trips" />
     <item
         android:id="@+id/navigation_chat"
         android:icon="@drawable/chat_outlined"
