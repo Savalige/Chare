@@ -7,19 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.puma.chare.ui.home.HomeFragment"
+        android:name="com.puma.chare.ui.search.search"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_create"
-        android:name="com.puma.chare.ui.dashboard.DashboardFragment"
+        android:name="com.puma.chare.ui.create.create"
         android:label="@string/title_create"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_create" />
 
     <fragment
         android:id="@+id/navigation_trips"
-        android:name="com.puma.chare.ui.notifications.NotificationsFragment"
+        android:name="com.puma.chare.ui.trips.trips"
         android:label="@string/title_trips"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_trips" />
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.puma.chare.ui.chat.chat"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.puma.chare.ui.profile.profile"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
