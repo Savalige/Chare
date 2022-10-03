@@ -14,7 +14,12 @@ namespace API.Models
         public int Tr_Price { get; set; }
         public string Tr_Destinations { get; set; } = string.Empty;
 
-        //TODO: Preferences, approved, declined, driver, requested, car. 
+        public CarModel Tr_Car { get; set; }
+        public ProfileModel Tr_Driver { get; set; }
+        public virtual ICollection<ApprovedModel>? Tr_ApprovedModel { get; set; }
+        public virtual ICollection<DeclinedModel>? Tr_DeclinedModel { get; set; }
+        public virtual ICollection<RequestedModel>? Tr_RequestedModel { get; set; }
+        public virtual ICollection<TripPreferenceModel>? Tr_TripPreferenceModel { get; set; }
 
     }
 }

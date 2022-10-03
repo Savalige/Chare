@@ -13,6 +13,7 @@ namespace API.Models
         public string Rq_Start { get; set; } = String.Empty;
         public string Rq_Destination { get; set; } = String.Empty;
 
-        //TODO: Trip, profile 
+        public ProfileModel Rq_Profile { get; set; }
+        public RequestedModel Rq_Requested { get; set; }
     }
 }

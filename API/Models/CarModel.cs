@@ -12,6 +12,8 @@ namespace API.Models
         public string Ca_Color { get; set; } = String.Empty;
         public int Ca_Seats { get; set; }
         public double Ca_FuelCon { get; set; }
-        //TODO: owner - profile. 
+
+        public ProfileModel Ca_Owner { get; set; }
+        public virtual ICollection<TripModel>? Ca_Trips { get; set; }
     }
 }

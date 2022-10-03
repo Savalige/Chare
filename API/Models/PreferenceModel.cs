@@ -15,6 +15,6 @@ namespace API.Models
         [Column(TypeName = "utf8mb4")]
         public char Pre_Emoji { get; set; }
 
-        //TODO: Trip 
+        public virtual ICollection<TripPreferenceModel>? Pre_TripPreferenceModel { get; set; }
     }
 }
