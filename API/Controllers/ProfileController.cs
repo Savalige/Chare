@@ -21,18 +21,15 @@ namespace API.Controllers
             _context = context;
         }
 
-        // GET: api/Profile
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProfileModel>>> GetProfiles()
-        {
-            return await _context.Profiles.ToListAsync();
-        }
 
         // GET: api/Profile/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProfileModel>> GetProfileModel(int id)
+        public async Task<ActionResult<ProfileModel>> GetProfile(int id)
         {
-            var profileModel = await _context.Profiles.FindAsync(id);
+            var profileModel = await _context.Profiles
+                .Where(p => p.Pr_Id == id)
+                .Include(pm => pm.Pr_ProfileInterestModel)
+                .FirstAsync();
 
             if (profileModel == null)
             {
@@ -44,8 +41,9 @@ namespace API.Controllers
 
         // PUT: api/Profile/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // TODO: Do we recieve the data in a form or not?
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfileModel(int id, ProfileModel profileModel)
+        public async Task<IActionResult> PutProfile(int id, ProfileModel profileModel)
         {
             if (id != profileModel.Pr_Id)
             {
@@ -75,18 +73,19 @@ namespace API.Controllers
 
         // POST: api/Profile
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // TODO: Do we recieve the data in a form or not?
         [HttpPost]
-        public async Task<ActionResult<ProfileModel>> PostProfileModel(ProfileModel profileModel)
+        public async Task<ActionResult<ProfileModel>> PostProfile(ProfileModel profileModel)
         {
             _context.Profiles.Add(profileModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProfileModel", new { id = profileModel.Pr_Id }, profileModel);
+            return CreatedAtAction("GetProfile", new { id = profileModel.Pr_Id }, profileModel);
         }
 
         // DELETE: api/Profile/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProfileModel(int id)
+        public async Task<IActionResult> DeleteProfile(int id)
         {
             var profileModel = await _context.Profiles.FindAsync(id);
             if (profileModel == null)
