@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+
+/*
+    TODO: Fix post and put depending on how the data is sent, and filtering depending on price.  
+ */
 
 namespace API.Controllers
 {
@@ -28,11 +27,97 @@ namespace API.Controllers
             return await _context.Trips.ToListAsync();
         }
 
+        // GET: api/Event
+        //TODO: Fix filtering after price (min and max, depending on gas-prices and also distance)
+        [HttpGet("{start, end, time, preferences?}")]
+        public async Task<ActionResult<IEnumerable<TripModel>>> GetTripsSearch([FromQuery] string start, string end, DateTime time, string preferences)
+        { 
+            if (preferences is not null)
+            {
+                // Make preferences into a list of int
+                var preferenceList = preferences.Split(',').Select(int.Parse).ToList();
+                return await _context.Trips
+                .Where(t => 
+                    t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start) > -1
+                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end) > -1
+                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start) 
+                    < t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end)
+                    )
+                .Where(t => t.Tr_DateTime > time)
+                .Where(t => (t.Tr_TripPreferenceModel.Any(p => preferenceList.Contains(p.Pre_Id))))
+                .OrderBy(t => t.Tr_DateTime)
+                .ToListAsync();
+            }
+            else
+            {
+                return await _context.Trips
+                .Where(t =>
+                    t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start) > -1
+                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end) > -1
+                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start)
+                    < t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end)
+                    )
+                .Where(t => t.Tr_DateTime > time)
+                .Where(t => (t.Tr_TripPreferenceModel.Any(p => preferenceList.Contains(p.Pre_Id))))
+                .OrderBy(t => t.Tr_DateTime)
+                .ToListAsync();
+            }
+        }
+        // GET: api/Trip/Driver/{profileID}
+        // Get a profiles owned trips, 5 hours back in time. 
+        [HttpGet("Driver/{profileID}")]
+        public async Task<ActionResult<IEnumerable<TripModel>>> GetOwnedTrips(int profileID)
+        {
+            return await _context.Trips
+            .Where(t => (t.Tr_Driver.Pr_Id == profileID && t.Tr_DateTime > (DateTime.Now.AddHours(-5))))
+            .OrderBy(t => t.Tr_DateTime)
+            .ToListAsync();
+        }
+
+        // GET: api/Trip/Passenger/{profileID}
+        // Get a profiles passenger-trips, 5 hours back in time. 
+        [HttpGet("Passenger/{profileID}")]
+        public async Task<ActionResult<IEnumerable<TripModel>>> GetPassengerTrips(int profileID)
+        {
+            return await _context.Trips
+            .Where(t => (
+                t.Tr_ApprovedPassengers.Any(a => a.AP_Passenger.Pr_Id == profileID) 
+                || t.Tr_Requests.Any(r => r.Rq_Profile.Pr_Id == profileID) 
+                && t.Tr_DateTime > (DateTime.Now.AddHours(-5)))
+                )
+            .OrderBy(t => t.Tr_DateTime)
+            .ToListAsync();
+        }
+
+        // GET: api/Trip/OldTrips/{profileID}
+        // Get a profiles old trips, from 5 hours back in time. 
+        [HttpGet("OldTrips/{profileID}")]
+        public async Task<ActionResult<IEnumerable<TripModel>>> GetOldTrips(int profileID)
+        {
+            return await _context.Trips
+            .Where(t => (
+                t.Tr_Driver.Pr_Id == profileID
+                || t.Tr_ApprovedPassengers.Any(a => a.AP_Passenger.Pr_Id == profileID)
+                || t.Tr_Requests.Any(r => r.Rq_Profile.Pr_Id == profileID)
+                && t.Tr_DateTime > (DateTime.Now.AddHours(+5)))
+                )
+            .OrderBy(t => t.Tr_DateTime)
+            .ToListAsync();
+        }
+
         // GET: api/Trip/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TripModel>> GetTripModel(int id)
+        public async Task<ActionResult<TripModel>> GetTrip(int id)
         {
-            var tripModel = await _context.Trips.FindAsync(id);
+            var tripModel = await _context.Trips
+                .Where(t => t.Tr_Id == id)
+                .Include(t => t.Tr_Car.Ca_FuelCon)
+                .Include(t => t.Tr_Car.Ca_Model)
+                .Include(t => t.Tr_ApprovedPassengers)
+                .Include(t => t.Tr_DeclinedModel)
+                .Include(t => t.Tr_Requests)
+                .Include(t => t.Tr_TripPreferenceModel)
+                .FirstOrDefaultAsync();
 
             if (tripModel == null)
             {
@@ -42,8 +127,18 @@ namespace API.Controllers
             return tripModel;
         }
 
+        // POST: api/Trip
+        [HttpPost]
+        //TODO: This should maybe be altered depending on how we want to send data to the API.
+        public async Task<ActionResult<TripModel>> PostTripModel(TripModel tripModel)
+        {
+            _context.Trips.Add(tripModel);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetTripModel", new { id = tripModel.Tr_Id }, tripModel);
+        }
+
         // PUT: api/Trip/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTripModel(int id, TripModel tripModel)
         {
@@ -71,17 +166,6 @@ namespace API.Controllers
             }
 
             return NoContent();
-        }
-
-        // POST: api/Trip
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<TripModel>> PostTripModel(TripModel tripModel)
-        {
-            _context.Trips.Add(tripModel);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTripModel", new { id = tripModel.Tr_Id }, tripModel);
         }
 
         // DELETE: api/Trip/5
