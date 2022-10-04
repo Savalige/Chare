@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.puma.chare.ui.profile.profile"
+        android:name="com.puma.chare.ui.login.ui.login.login"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_login" />
 </navigation>
