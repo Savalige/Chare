@@ -5,4 +5,8 @@
     <string name="title_trips">Resor</string>
     <string name="title_chat">Chatt</string>
     <string name="title_profile">Profil</string>
+
+    <!-- Search view-->
+    <string name="search_journey">Sök Resa</string>
+    <string name="where_would_you_like_to_go">Vart vill du åka?</string>
 </resources>
