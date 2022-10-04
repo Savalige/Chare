@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Material3.HeadlineLarge.Chare">
+        <item name="fontFamily">@font/reem_kufi</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="TextAppearance.Material3.HeadlineMedium.Chare">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextAppearance.Material3.BodyMedium.Chare">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.Material3.BodySmall.Chare">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/Gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>
