@@ -58,7 +58,6 @@ namespace API.Controllers
                     < t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end)
                     )
                 .Where(t => t.Tr_DateTime > time)
-                .Where(t => (t.Tr_TripPreferenceModel.Any(p => preferenceList.Contains(p.Pre_Id))))
                 .OrderBy(t => t.Tr_DateTime)
                 .ToListAsync();
             }
