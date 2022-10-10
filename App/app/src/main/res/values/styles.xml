@@ -5,6 +5,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.BodyMedium.Chare</item>
+        <item name="android:backgroundTint">@color/Purple</item>
         <item name="iconGravity">textEnd</item>
         <item name="android:padding">15sp</item>
         <item name="cornerRadius">10dp</item>
