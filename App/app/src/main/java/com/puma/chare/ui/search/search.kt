@@ -1,6 +1,5 @@
 package com.puma.chare.ui.search
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings.Global
 import android.util.Log
@@ -23,7 +22,6 @@ import java.net.URL
 import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 import kotlin.coroutines.CoroutineContext
-
 
 class Test(test: Int) {
     val test: Int = test
@@ -77,7 +75,8 @@ class search : Fragment() {
         // Eg. send to next view or to API for processing.
         Log.d("ok: ", "$origin")
 
-        val network: Network = Network("https://jsonplaceholder.typicode.com/todos/1")
+        //val network: Network = Network("http://10.0.2.2:7256/api/Profile/1")
+        val network: Network = Network("https://jsonplaceholder.typicode.com/posts/1/comments")
 
         val result: String = runBlocking { return@runBlocking network.getAsync().await() }
             Log.d("test", result)

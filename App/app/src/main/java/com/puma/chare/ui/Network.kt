@@ -7,17 +7,17 @@ import kotlinx.coroutines.*
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.net.HttpURLConnection
 import java.net.URL
 import java.util.stream.Collectors
-import javax.net.ssl.HttpsURLConnection
 
 class Network(url: String) {
     lateinit var url: URL
-    lateinit var connection: HttpsURLConnection
+    lateinit var connection: HttpURLConnection
 
     init {
         this.url = URL(url)
-        this.connection = this.url.openConnection() as HttpsURLConnection
+        this.connection = this.url.openConnection() as HttpURLConnection
     }
 
     /**
@@ -38,8 +38,9 @@ class Network(url: String) {
             val gson: Gson = Gson()
 
             // Convert BufferedReader to String and return it.
-            return@async bf.lines().collect(Collectors.joining())
-        } finally {
+            return@async bf.lines().collect(Collectors.joining()) as String
+        }
+        finally {
             connection.disconnect()
     }
 }
