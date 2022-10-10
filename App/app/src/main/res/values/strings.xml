@@ -19,4 +19,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Profile -->
+    <string name="profile_name">Alex Wahlroos</string>
+    <string name="profile_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="profile_trips">resor</string>
+    <string name="profile_distance_driven">mil kört</string>
+    <string name="profile_distance_traveled">mil åkt</string>
+    <string name="profile_interests">Intressen</string>
+    <string name="profile_reviews">Recensioner</string>
+
 </resources>
