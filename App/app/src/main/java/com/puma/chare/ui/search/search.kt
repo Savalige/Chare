@@ -1,7 +1,6 @@
 package com.puma.chare.ui.search
 
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,19 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.google.android.material.textfield.TextInputEditText
-import com.google.gson.Gson
 import com.puma.chare.R
 import com.puma.chare.ui.Network
 import kotlinx.coroutines.*
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.stream.Collectors
-import javax.net.ssl.HttpsURLConnection
-import kotlin.coroutines.CoroutineContext
 
 class Test(test: Int) {
     val test: Int = test
@@ -44,6 +37,8 @@ class search : Fragment() {
         // Hide the actionbar.
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
+        //SearchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+
         // Inflate view.
         val view = inflater.inflate(com.puma.chare.R.layout.fragment_search, container, false)
 
@@ -51,10 +46,7 @@ class search : Fragment() {
         val button: Button = view.findViewById(R.id.submitButton)
 
         // Add eventListener on Button.
-        button.setOnClickListener {
-            onSubmit(view)
-            Log.d("ok", "Hej!")
-        }
+        button.setOnClickListener { onSubmit(view)}
         return view
     }
 
@@ -79,6 +71,6 @@ class search : Fragment() {
         val network: Network = Network("https://jsonplaceholder.typicode.com/posts/1/comments")
 
         val result: String = runBlocking { return@runBlocking network.getAsync().await() }
-            Log.d("test", result)
+        Log.d("test", result)
     }
 }
