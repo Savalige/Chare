@@ -123,10 +123,11 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
         <Button
-            android:id="@+id/buttonContinue"
+            android:id="@+id/userCreateButtonContinue1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:onClick="switch"
             android:text="Fortsätt"
             app:layout_constraintEnd_toEndOf="@+id/editTextDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />

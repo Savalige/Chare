@@ -50,4 +50,5 @@
         android:name="com.puma.chare.ui.createUser.CreateUser"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_login" />
+
 </navigation>

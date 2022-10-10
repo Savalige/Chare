@@ -1,12 +1,15 @@
 package com.puma.chare.ui.createUser
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.puma.chare.R
+import com.puma.chare.CreateUserActivity as CreateUser1
+
 
 class CreateUser : Fragment() {
 
@@ -20,7 +23,12 @@ class CreateUser : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_create_user, container, false)
+        val button: Button = R.id.userCreateButtonContinue1 as Button
+        button.setOnClickListener {
+            val act:CreateUser1 = activity as com.puma.chare.CreateUserActivity
+            act.replaceFragments(CreateUser2());
+        }
+        return inflater.inflate(R.layout.fragment_create_user_1, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
