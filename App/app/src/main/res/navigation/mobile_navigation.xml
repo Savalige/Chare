@@ -3,35 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_search">
+    app:startDestination="@+id/navigationSearch">
 
     <fragment
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigationSearch"
         android:name="com.puma.chare.ui.search.search"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_create"
+        android:id="@+id/navigationCreate"
         android:name="com.puma.chare.ui.create.create"
         android:label="@string/title_create"
         tools:layout="@layout/fragment_create" />
 
     <fragment
-        android:id="@+id/navigation_trips"
+        android:id="@+id/navigationTrips"
         android:name="com.puma.chare.ui.trips.trips"
         android:label="@string/title_trips"
         tools:layout="@layout/fragment_trips" />
 
     <fragment
-        android:id="@+id/navigation_chat"
+        android:id="@+id/navigationChat"
         android:name="com.puma.chare.ui.chat.chat"
         android:label="@string/title_chat"
         tools:layout="@layout/fragment_chat" />
 
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigationProfile"
+        android:name="com.puma.chare.ui.profile.profile"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/loginFragment"
         android:name="com.puma.chare.ui.login.ui.login.login"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_createUserFragment"
+            app:destination="@id/createUserFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createUserFragment"
+        android:name="com.puma.chare.ui.createUser.CreateUser"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_login" />
 </navigation>

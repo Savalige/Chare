@@ -15,9 +15,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.puma.chare.databinding.FragmentLoginBinding
 
 import com.puma.chare.R
+import com.puma.chare.ui.create.create
 
 class login : Fragment() {
 
@@ -48,6 +50,7 @@ class login : Fragment() {
         val passwordEditText = binding.password
         val loginButton = binding.login
         val loadingProgressBar = binding.loading
+        val createUser = binding.textViewCreate
 
         loginViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
@@ -109,6 +112,10 @@ class login : Fragment() {
                 usernameEditText.text.toString(),
                 passwordEditText.text.toString()
             )
+        }
+
+        createUser.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_loginFragment_to_createUserFragment)
         }
     }
 

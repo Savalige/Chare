@@ -114,6 +114,8 @@
         android:text="@string/create_new_login"
         android:textColor="@color/DarkPurple"
         android:textStyle="bold"
+        android:clickable="true"
+        android:onClick=""
         app:layout_constraintEnd_toEndOf="@+id/login"
         app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/textViewNoUser" />
