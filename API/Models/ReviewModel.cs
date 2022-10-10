@@ -14,6 +14,9 @@ namespace API.Models
         public int Re_Rating { get; set; }
         public string Re_Text { get; set; } = String.Empty;
 
-        //TODO: Add rater, rated. 
+        public ProfileModel Re_Rater { get; set; }
+        public int Re_Rater_Id { get; set; }
+        public ProfileModel Re_Rated { get; set; }
+        public int Re_Rated_Id { get; set; }
     }
 }
