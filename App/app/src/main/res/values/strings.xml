@@ -19,4 +19,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Strings related to create trip -->
+    <string name="continue_create">Fortsätt</string>
+    <string name="sub_heading">Välj destination och avresa</string>
+    <string name="create_trip">Skapa resa</string>
+    <string name="from">Från</string>
+    <string name="to">Till</string>
+    <string name="date">Datum</string>
+    <string name="time">Tid</string>
+    <string name="car_desc">Car illustration</string>
+
 </resources>
