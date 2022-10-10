@@ -1,6 +1,8 @@
 package com.puma.chare.ui.search
 
+import android.os.AsyncTask
 import android.os.Bundle
+import android.provider.Settings.Global
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +12,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.google.gson.Gson
 import com.puma.chare.R
+import com.puma.chare.ui.Network
+import kotlinx.coroutines.*
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.net.URL
+import java.util.stream.Collectors
+import javax.net.ssl.HttpsURLConnection
+import kotlin.coroutines.CoroutineContext
 
+
+class Test(test: Int) {
+    val test: Int = test
+}
 
 class search : Fragment() {
 
@@ -60,5 +76,10 @@ class search : Fragment() {
         // Origin and destination is ready to be used.
         // Eg. send to next view or to API for processing.
         Log.d("ok: ", "$origin")
+
+        val network: Network = Network("https://jsonplaceholder.typicode.com/todos/1")
+
+        val result: String = runBlocking { return@runBlocking network.getAsync().await() }
+            Log.d("test", result)
     }
 }
