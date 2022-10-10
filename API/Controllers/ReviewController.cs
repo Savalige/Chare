@@ -21,33 +21,33 @@ namespace API.Controllers
             _context = context;
         }
 
-        // GET: api/Review
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetReviews()
+        // GET: api/Review/fromProfile/5
+        [HttpGet("fromProfile/{id}")]
+        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetAllReviews(int id)
         {
-            return await _context.Reviews.ToListAsync();
+            return await _context.Reviews
+                .Where(r => r.Re_Id == id)
+                .Include(r => r.Re_Rated)
+                .OrderBy(r => r.Re_DateTime)
+                .ToListAsync();
         }
 
         // GET: api/Review/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ReviewModel>> GetReviewModel(int id)
+        public async Task<ActionResult<ReviewModel>> GetReview(int id)
         {
-            var reviewModel = await _context.Reviews.FindAsync(id);
-
-            if (reviewModel == null)
-            {
-                return NotFound();
-            }
-
-            return reviewModel;
+            return await _context.Reviews.Where(r => r.Re_Id == id)
+                .Include(r => r.Re_Rated)
+                .OrderBy(r => r.Re_DateTime)
+                .FirstAsync();
         }
 
         // PUT: api/Review/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutReviewModel(int id, ReviewModel reviewModel)
+        public async Task<IActionResult> PutReview(int id, ReviewModel reviewModel)
         {
-            if (id != reviewModel.Re_Rater_Id)
+            if (id != reviewModel.Re_Id)
             {
                 return BadRequest();
             }
@@ -76,7 +76,7 @@ namespace API.Controllers
         // POST: api/Review
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ReviewModel>> PostReviewModel(ReviewModel reviewModel)
+        public async Task<ActionResult<ReviewModel>> PostReview(ReviewModel reviewModel)
         {
             _context.Reviews.Add(reviewModel);
             try
@@ -85,7 +85,7 @@ namespace API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ReviewModelExists(reviewModel.Re_Rater_Id))
+                if (ReviewModelExists(reviewModel.Re_Id))
                 {
                     return Conflict();
                 }
@@ -95,12 +95,12 @@ namespace API.Controllers
                 }
             }
 
-            return CreatedAtAction("GetReviewModel", new { id = reviewModel.Re_Rater_Id }, reviewModel);
+            return CreatedAtAction("GetReview", new { id = reviewModel.Re_Id }, reviewModel);
         }
 
         // DELETE: api/Review/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteReviewModel(int id)
+        public async Task<IActionResult> DeleteReview(int id)
         {
             var reviewModel = await _context.Reviews.FindAsync(id);
             if (reviewModel == null)
@@ -116,7 +116,7 @@ namespace API.Controllers
 
         private bool ReviewModelExists(int id)
         {
-            return _context.Reviews.Any(e => e.Re_Rater_Id == id);
+            return _context.Reviews.Any(e => e.Re_Id == id);
         }
     }
 }

@@ -22,6 +22,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="NuGet.PackageManagement" Version="6.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="NuGet.PackageManagement" />
+  </ItemGroup>
 </Project>
