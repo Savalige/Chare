@@ -23,21 +23,21 @@ namespace API.Controllers
 
         // GET: api/Review/fromProfile/5
         [HttpGet("fromProfile/{id}")]
-        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetAllReviews(int id)
+        public async Task<ActionResult<IEnumerable<ReviewModel>>> GetAllProfileReviews(int id)
         {
             return await _context.Reviews
-                .Where(r => r.Re_Id == id)
-                .Include(r => r.Re_Rated)
+                .Where(r => r.Re_Rated_Id == id)
+                .Include(r => r.Re_Rater)
                 .OrderBy(r => r.Re_DateTime)
                 .ToListAsync();
         }
 
         // GET: api/Review/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ReviewModel>> GetReview(int id)
+        public async Task<ActionResult<ReviewModel>> GetLatestProfileReview(int id)
         {
-            return await _context.Reviews.Where(r => r.Re_Id == id)
-                .Include(r => r.Re_Rated)
+            return await _context.Reviews.Where(r => r.Re_Rated_Id == id)
+                .Include(r => r.Re_Rater)
                 .OrderBy(r => r.Re_DateTime)
                 .FirstAsync();
         }
