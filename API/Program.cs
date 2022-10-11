@@ -1,11 +1,11 @@
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+//var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+/*builder.Services.AddCors(options =>
 {
 	options.AddPolicy(name: MyAllowSpecificOrigins,
 					  policy =>
@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
 											  .AllowAnyHeader()
 											  .AllowAnyMethod();
 					  });
-});
+});*/
 
 // Add services to the container.
 
@@ -38,7 +38,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Disabling https
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
