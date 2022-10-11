@@ -8,6 +8,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.puma.chare.R
+import com.puma.chare.databinding.FragmentCreateUser1Binding
+import com.puma.chare.databinding.FragmentLoginBinding
 import com.puma.chare.CreateUserActivity as CreateUser1
 
 
@@ -18,17 +20,25 @@ class CreateUser : Fragment() {
     }
 
     private lateinit var viewModel: CreateUserViewModel
+    private var _binding: FragmentCreateUser1Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val button: Button = R.id.userCreateButtonContinue1 as Button
+        _binding = FragmentCreateUser1Binding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val button = binding.userCreateButtonContinue1
         button.setOnClickListener {
             val act:CreateUser1 = activity as com.puma.chare.CreateUserActivity
             act.replaceFragments(CreateUser2());
         }
-        return inflater.inflate(R.layout.fragment_create_user_1, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

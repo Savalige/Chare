@@ -13,7 +13,7 @@ class CreateUserActivity : AppCompatActivity() {
 
     public fun replaceFragments(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainerView2, fragment)
+            replace(R.id.userCreateFragmentContainerView, fragment)
             commit()
         }
     }
