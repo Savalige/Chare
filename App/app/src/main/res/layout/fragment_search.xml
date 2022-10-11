@@ -27,10 +27,11 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
             android:text="@string/where_would_you_like_to_go"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/origin"
@@ -67,9 +68,9 @@
 
         <Button
             android:id="@+id/submitButton"
-            android:text="@string/search_journey"
             style="@style/LargeButtonStyle"
             android:layout_marginTop="20dp"
+            android:text="@string/search_journey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/destination" />
