@@ -30,4 +30,16 @@
     <string name="time">Tid</string>
     <string name="car_desc">Car illustration</string>
 
+    <string name="sub_heading2">Välj rutt</string>
+    <string name="rutt_btn">Lägg till stopp</string>
+    <string name="sub_heading3">Fordon och pris</string>
+    <string name="vehicle">Fordon</string>
+    <string name="change_vehicle">&#160;&#160;Byt fordon&#160;&#160;</string>
+    <string name="available_seats">Antal lediga platser</string>
+    <string name="cost_example">Vårt förslag på pris</string>
+    <string name="cost_clarify">För varje person som åker med dig hela vägen får du</string>
+    <string name="btn_count">Hur har vi räknat?</string>
+
+    <string name="sub_heading4">Preferenser</string>
+
 </resources>

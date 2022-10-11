@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@drawable/layout_bg"
-    android:layout_marginHorizontal="@dimen/activity_horizontal_margin">
+    android:background="@drawable/layout_bg">
 
     <TextView
         android:id="@+id/tripTitle"
