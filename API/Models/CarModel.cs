@@ -15,6 +15,5 @@ namespace API.Models
         public string Ca_Fuel { get; set; } = String.Empty;
 
         public ProfileModel Ca_Owner { get; set; }
-        public virtual ICollection<TripModel>? Ca_Trips { get; set; }
     }
 }

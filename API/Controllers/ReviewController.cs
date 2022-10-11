@@ -32,8 +32,8 @@ namespace API.Controllers
                 .ToListAsync();
         }
 
-        // GET: api/Review/5
-        [HttpGet("{id}")]
+        // GET: api/Review/latest/5
+        [HttpGet("latest/{id}")]
         public async Task<ActionResult<ReviewModel>> GetLatestProfileReview(int id)
         {
             return await _context.Reviews.Where(r => r.Re_Rated_Id == id)

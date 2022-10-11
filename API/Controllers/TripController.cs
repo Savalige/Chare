@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Newtonsoft.Json;
 
 /*
     TODO: Fix post and put depending on how the data is sent, and filtering depending on price.  
@@ -27,9 +28,9 @@ namespace API.Controllers
             return await _context.Trips.ToListAsync();
         }
 
-        // GET: api/Event
+        // GET: api/Trip/Search
         //TODO: Fix filtering after price (min and max, depending on gas-prices and also distance)
-        [HttpGet("{start, end, time, preferences?}")]
+        [HttpGet("Search/{start, end, time, preferences?}")]
         public async Task<ActionResult<IEnumerable<TripModel>>> GetTripsSearch([FromQuery] string start, string end, DateTime time, string preferences)
         { 
             if (preferences is not null)
@@ -110,8 +111,8 @@ namespace API.Controllers
         {
             var tripModel = await _context.Trips
                 .Where(t => t.Tr_Id == id)
-                .Include(t => t.Tr_Car.Ca_FuelCon)
-                .Include(t => t.Tr_Car.Ca_Model)
+                .Include(t => t.Tr_Car)
+                .Include(t => t.Tr_Driver)
                 .Include(t => t.Tr_ApprovedPassengers)
                 .Include(t => t.Tr_DeclinedModel)
                 .Include(t => t.Tr_Requests)
@@ -128,13 +129,23 @@ namespace API.Controllers
 
         // POST: api/Trip
         [HttpPost]
-        //TODO: This should maybe be altered depending on how we want to send data to the API.
-        public async Task<ActionResult<TripModel>> PostTripModel(TripModel tripModel)
+        public async Task<ActionResult<TripModel>> PostTripModel([FromForm] string tripdata)
         {
+           
+            dynamic m = JsonConvert.DeserializeObject(tripdata);
+
+            TripModel tripModel = new TripModel();
+
+            tripModel.Tr_DateTime = m.tr_DateTime;
+            tripModel.Tr_AvaliableSeats = m.tr_AvaliableSeats;
+            tripModel.Tr_Price = m.tr_Price;
+            tripModel.Tr_Destinations = m.tr_Destinations;
+            tripModel.Tr_Car = await _context.Cars.FindAsync(Convert.ToInt32(m.tr_Car.ca_Id));
+            tripModel.Tr_Driver = await _context.Profiles.FindAsync(Convert.ToInt32(m.tr_Driver.pr_Id));
+
             _context.Trips.Add(tripModel);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTripModel", new { id = tripModel.Tr_Id }, tripModel);
+            return CreatedAtAction("GetTrip", new { id = tripModel.Tr_Id }, tripModel);
         }
 
         // PUT: api/Trip/5

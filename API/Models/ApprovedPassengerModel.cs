@@ -12,6 +12,5 @@ namespace API.Models
         public string AP_Destination { get; set; } = String.Empty;  
         public int AP_Price { get; set; }
         public ProfileModel AP_Passenger { get; set; }
-        public TripModel AP_Trip { get; set; }
     }
 }

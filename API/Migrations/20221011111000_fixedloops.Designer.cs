@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20221011111000_fixedloops")]
+    partial class fixedloops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -323,7 +325,7 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.ApprovedPassengerModel", b =>
                 {
                     b.HasOne("API.Models.ProfileModel", "AP_Passenger")
-                        .WithMany()
+                        .WithMany("Pr_ApprovedPassengerModel")
                         .HasForeignKey("AP_PassengerPr_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -387,7 +389,7 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.RequestModel", b =>
                 {
                     b.HasOne("API.Models.ProfileModel", "Rq_Profile")
-                        .WithMany()
+                        .WithMany("Pr_RequestModel")
                         .HasForeignKey("Rq_ProfilePr_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -464,6 +466,8 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.ProfileModel", b =>
                 {
+                    b.Navigation("Pr_ApprovedPassengerModel");
+
                     b.Navigation("Pr_DeclinedModel");
 
                     b.Navigation("Pr_ProfileInterestModel");
@@ -471,6 +475,8 @@ namespace API.Migrations
                     b.Navigation("Pr_Rated");
 
                     b.Navigation("Pr_Rater");
+
+                    b.Navigation("Pr_RequestModel");
                 });
 
             modelBuilder.Entity("API.Models.TripModel", b =>

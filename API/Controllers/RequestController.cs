@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -76,13 +77,54 @@ namespace API.Controllers
         // POST: api/Request
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RequestModel>> PostRequestModel(RequestModel requestModel)
+        public async Task<ActionResult<RequestModel>> PostRequestModel([FromForm] string requestdata)
         {
+            dynamic m = JsonConvert.DeserializeObject(requestdata);
+
+            RequestModel requestModel = new RequestModel();
+
+            requestModel.Rq_Start = m.rq_Start;
+            requestModel.Rq_Destination = m.rq_Destination;
+            requestModel.Rq_Price = m.rq_Price;
+            requestModel.Rq_Message = m.rq_Message;
+            requestModel.Rq_Profile = await _context.Profiles.FindAsync(Convert.ToInt32(m.rq_Profile.pr_Id));
+
             _context.Requests.Add(requestModel);
+
+            TripModel trip = await _context.Trips.FindAsync(Convert.ToInt32(m.rq_tripID));
+            if(trip.Tr_Requests == null)
+            {
+                trip.Tr_Requests = new List<RequestModel>();
+            }
+   
+            trip.Tr_Requests.Add(requestModel);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRequestModel", new { id = requestModel.Rq_Id }, requestModel);
         }
+
+
+        // POST: api/Request/Accept/2
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /*
+        [HttpPost("Accept/{id}")]
+        public async Task<ActionResult<RequestModel>> AcceptRequestModel(int id)
+        {
+            var request = _context.Requests.FindAsync(id);
+
+            TripModel trip = await _context.Trips.FindAsync(Convert.ToInt32(m.rq_tripID));
+            if (trip.Tr_Requests == null)
+            {
+                trip.Tr_Requests = new List<RequestModel>();
+            }
+
+            trip.Tr_Requests.Add(requestModel);
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetRequestModel", new { id = requestModel.Rq_Id }, requestModel);
+        }*/
 
         // DELETE: api/Request/5
         [HttpDelete("{id}")]
