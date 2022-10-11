@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/LightestPurple"
+    android:background="#EAEAFF"
     tools:context=".ui.createUser.CreateUser">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textCreateUser"
@@ -43,24 +39,24 @@
             android:id="@+id/editUserFirstName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Förnamn"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCreateUserSite" />
 
         <EditText
             android:id="@+id/editUserLastName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Efternamn"
             android:inputType="textPersonName"
@@ -74,9 +70,9 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Emailadress"
             android:inputType="textEmailAddress"
@@ -98,9 +94,9 @@
             android:id="@+id/editTextTextPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Lösenord"
             android:inputType="textPassword"
@@ -112,9 +108,9 @@
             android:id="@+id/editTextDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Födelsedatum"
             android:inputType="date"
@@ -127,10 +123,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:onClick="switch"
             android:text="Fortsätt"
             app:layout_constraintEnd_toEndOf="@+id/editTextDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textViewCreateUserSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Profilinformation"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium.Chare"
+            app:layout_constraintStart_toStartOf="@+id/textCreateUser"
+            app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
