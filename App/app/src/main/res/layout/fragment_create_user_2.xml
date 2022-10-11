@@ -143,7 +143,7 @@
     </HorizontalScrollView>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonUserCreateContinue2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -165,12 +165,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Hoppa över"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
         android:textColor="@color/DarkestPurple"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue2"
         app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
