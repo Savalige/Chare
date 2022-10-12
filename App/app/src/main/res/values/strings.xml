@@ -41,5 +41,10 @@
     <string name="btn_count">Hur har vi räknat?</string>
 
     <string name="sub_heading4">Preferenser</string>
-
+    <string name="quiet_ride">Tyst i bilen</string>
+    <string name="allow_pets">Tillåt husdjur</string>
+    <string name="co_driving">Gemensam körning</string>
+    <string name="luggage">Utrymme för bagage</string>
+    <string name="ex_dep">Exakt avgångstid</string>
+    <string name="dir_only">Endast direkttransport</string>
 </resources>

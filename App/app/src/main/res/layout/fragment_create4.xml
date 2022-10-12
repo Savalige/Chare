@@ -67,16 +67,60 @@
             app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:layout_width="170dp"
-            android:layout_height="100dp"
-            app:chipCornerRadius="20dp"
-            android:text="aksdaslkdasd"
-            android:textAlignment="center"
-            android:backgroundTint="@color/LightestPurple"
+        <Button
+            android:id="@+id/button3"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="52dp"
+            android:text="@string/quiet_ride"
+            app:icon="@drawable/volume_off"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="52dp"
+            android:text="@string/allow_pets"
+            app:icon="@drawable/pets"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="5dp"
+            android:text="@string/co_driving"
+            app:icon="@drawable/icon_shared_driving"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+        <Button
+            android:id="@+id/button8"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="5dp"
+            android:text="@string/luggage"
+            app:icon="@drawable/luggage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <Button
+            android:id="@+id/button9"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="5dp"
+            android:text="@string/ex_dep"
+            app:icon="@drawable/schedule"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+        <Button
+            android:id="@+id/button10"
+            style="@style/preferenceStyle"
+            android:layout_marginTop="5dp"
+            android:text="@string/dir_only"
+            app:icon="@drawable/icon_direct_transit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button8" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
