@@ -50,6 +50,13 @@
     <string name="luggage">Utrymme för bagage</string>
     <string name="ex_dep">Exakt avgångstid</string>
     <string name="dir_only">Endast direkttransport</string>
+
+    <string name="sub_heading5">Sammanfattning</string>
+    <string name="via">via</string>
+    <string name="show_on_map">Visa på karta</string>
+    <string name="seats_available">platser lediga</string>
+    <string name="publish">Publicera resa</string>
+    <string name="preferences">Angivna preferenser</string>
     
     <!-- Profile -->
     <string name="profile_name">Alex Wahlroos</string>
