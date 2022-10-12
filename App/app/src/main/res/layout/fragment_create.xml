@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
-    tools:context=".ui.create.create">
+    tools:context=".ui.create.Create">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputTo">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputDate"
+                android:id="@+id/inputDateField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/date" />
@@ -121,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputDate">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputTime"
+                android:id="@+id/inputTimeField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/time" />
