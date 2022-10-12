@@ -140,6 +140,29 @@ namespace API.Controllers
             return Ok();
         }
 
+        // POST: api/Request/Deny/2
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost("Deny/{requestId}/{tripId}")]
+        public async Task<ActionResult> DenyRequestModel(int requestId, int tripId)
+        {
+            RequestModel rq = await _context.Requests.Include(r => r.Rq_Profile).Where(r => r.Rq_Id == requestId)
+               .FirstAsync();
+
+            TripModel trip = await _context.Trips.FindAsync(tripId);
+            DeclinedModel dm = new DeclinedModel();
+            dm.Dec_Trip = trip;
+            dm.Dec_Profile = rq.Rq_Profile;
+
+            trip.Tr_Requests.Remove(rq);
+            _context.Requests.Remove(rq);
+
+            _context.DeclinedRequests.Add(dm);
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         // DELETE: api/Request/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequestModel(int id)
