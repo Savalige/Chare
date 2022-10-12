@@ -9,7 +9,8 @@
         android:id="@+id/navigation_search"
         android:name="com.puma.chare.ui.search.search"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_create"
@@ -31,7 +32,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.puma.chare.ui.login.ui.login.login"
+        android:name="com.puma.chare.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_profile2" />
 </navigation>
