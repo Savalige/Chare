@@ -7,15 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
-import androidx.lifecycle.ViewModel
 import com.puma.chare.R
 import java.util.*
 
-class create : Fragment() {
+class Create : Fragment() {
 
     companion object {
-        fun newInstance() = create()
+        fun newInstance() = Create()
     }
 
     private lateinit var viewModel: CreateViewModel
@@ -31,8 +29,8 @@ class create : Fragment() {
         // Changes in UI must be done after view is inflated.
         val origin = inflatedView?.findViewById<EditText>(R.id.inputOrigin)?.text.toString()
         val destination = inflatedView?.findViewById<EditText>(R.id.inputDestination)?.text.toString()
-        val date = inflatedView?.findViewById<EditText>(R.id.inputDate)?.text.toString()
-        val time = inflatedView?.findViewById<EditText>(R.id.inputTime)?.text.toString()
+        val date = inflatedView?.findViewById<EditText>(R.id.inputDateField)?.text.toString()
+        val time = inflatedView?.findViewById<EditText>(R.id.inputTimeField)?.text.toString()
 
         // TODO: Pass date from input to part1ToViewModel instead of current date.
         viewModel.part1ToViewModel(origin, destination, Date())
