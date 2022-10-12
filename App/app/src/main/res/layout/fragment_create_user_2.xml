@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAEAFF"
+    android:minHeight="64dp"
+    tools:context=".ui.createUser.CreateUser2">
+
+    <TextView
+        android:id="@+id/textCreateUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/create_new_login"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
+        android:textColor="@color/Black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLogin" />
+
+    <TextView
+        android:id="@+id/textLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/back_arrow"
+        android:drawablePadding="10dp"
+        android:text="Profilinfo"
+        android:textColor="@color/DarkPurple"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCreateUserSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Personlig beskrivning"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium.Chare"
+        app:layout_constraintStart_toStartOf="@+id/textCreateUser"
+        app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:height="176dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Säg något om dig själv"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textCreateUser"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCreateUserSite" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Välj profilbild"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Välj intressen"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Intressen"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageViewAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:src="@drawable/add"
+                app:srcCompat="@drawable/add" />
+
+            <ImageView
+                android:id="@+id/imageViewRock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/rock"
+                app:srcCompat="@drawable/rock" />
+
+            <ImageView
+                android:id="@+id/imageViewCooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:src="@drawable/cooking"
+                app:srcCompat="@drawable/cooking" />
+
+            <ImageView
+                android:id="@+id/imageViewGaming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:src="@drawable/gaming"
+                app:srcCompat="@drawable/gaming" />
+
+            <ImageView
+                android:id="@+id/imageViewHiking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:src="@drawable/hiking"
+                app:srcCompat="@drawable/hiking" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/buttonUserCreateContinue3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Fortsätt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hoppa över"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        android:textColor="@color/DarkestPurple"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue3"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

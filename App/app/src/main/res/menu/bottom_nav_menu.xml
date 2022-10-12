@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigationSearch"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_create"
+        android:id="@+id/navigationCreate"
         android:icon="@drawable/add_car_outlined"
         android:title="@string/title_create" />
 
     <item
-        android:id="@+id/navigation_trips"
+        android:id="@+id/navigationTrips"
         android:icon="@drawable/reciept_outlined"
         android:title="@string/title_trips" />
     <item
-        android:id="@+id/navigation_chat"
+        android:id="@+id/navigationChat"
         android:icon="@drawable/chat_outlined"
         android:title="@string/title_chat" />
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/loginFragment"
         android:icon="@drawable/profile_outlined"
         android:title="@string/title_profile" />
 

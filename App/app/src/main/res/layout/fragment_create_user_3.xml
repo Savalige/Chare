@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAEAFF"
+    tools:context=".ui.createUser.CreateUser3">
+
+    <TextView
+        android:id="@+id/textLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/back_arrow"
+        android:drawablePadding="10dp"
+        android:text="Personlig Beskrivning"
+        android:textColor="@color/DarkPurple"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCreateUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/create_new_login"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
+        android:textColor="@color/Black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLogin" />
+
+    <TextView
+        android:id="@+id/textViewCreateUserSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Bilinformation"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium.Chare"
+        app:layout_constraintStart_toStartOf="@+id/textCreateUser"
+        app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
+
+    <EditText
+        android:id="@+id/editUserFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Bilmodell"
+        android:inputType="textPersonName|text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCreateUserSite" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/editUserFirstName"
+        app:layout_constraintStart_toStartOf="@+id/editUserFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/editUserFirstName">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="@color/Black"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="@color/DarkGray"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="@color/Gray"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="@color/White"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#D2AF8F"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#8E6138"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageVie7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#6E82B7"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#2E4E9E"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#2E5B19"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#85C866"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#CCBC2A"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="@drawable/white_circle"
+                android:foregroundTint="#D32929"
+                android:padding="5dp"
+                android:src="@drawable/white_circle" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textViewFuel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="0.7 Liter / Milen"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        android:textColor="@color/Black"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+    <TextView
+        android:id="@+id/textViewFuel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Disel"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        android:textColor="@color/Black"
+        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:text="Bensin"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFuel2"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="96dp"
+        android:text="Antal lediga säten"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+    <Button
+        android:id="@+id/buttonUserCreateContinue3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Fortsätt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingen egen bil"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+        android:textColor="@color/DarkestPurple"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue3"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue3" />
+
+    <ImageView
+        android:id="@+id/imageViewBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
