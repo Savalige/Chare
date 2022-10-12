@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20221011111000_fixedloops")]
+    partial class fixedloops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,12 +116,7 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("ProfileModelPr_Id")
-                        .HasColumnType("int");
-
                     b.HasKey("In_Id");
-
-                    b.HasIndex("ProfileModelPr_Id");
 
                     b.ToTable("Tbl_Interests");
                 });
@@ -145,6 +142,21 @@ namespace API.Migrations
                     b.HasKey("Pre_Id");
 
                     b.ToTable("Tbl_Preferences");
+                });
+
+            modelBuilder.Entity("API.Models.ProfileInterestModel", b =>
+                {
+                    b.Property<int>("Pr_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("In_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Pr_Id", "In_Id");
+
+                    b.HasIndex("In_Id");
+
+                    b.ToTable("Tbl_ProfileInterests");
                 });
 
             modelBuilder.Entity("API.Models.ProfileModel", b =>
@@ -313,7 +325,7 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.ApprovedPassengerModel", b =>
                 {
                     b.HasOne("API.Models.ProfileModel", "AP_Passenger")
-                        .WithMany()
+                        .WithMany("Pr_ApprovedPassengerModel")
                         .HasForeignKey("AP_PassengerPr_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -355,17 +367,29 @@ namespace API.Migrations
                     b.Navigation("Dec_Trip");
                 });
 
-            modelBuilder.Entity("API.Models.InterestModel", b =>
+            modelBuilder.Entity("API.Models.ProfileInterestModel", b =>
                 {
-                    b.HasOne("API.Models.ProfileModel", null)
-                        .WithMany("Pr_ProfileInterests")
-                        .HasForeignKey("ProfileModelPr_Id");
+                    b.HasOne("API.Models.InterestModel", "Pr_In_Interest")
+                        .WithMany("In_ProfileInterestModel")
+                        .HasForeignKey("In_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Models.ProfileModel", "Pr_In_Profile")
+                        .WithMany("Pr_ProfileInterestModel")
+                        .HasForeignKey("Pr_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pr_In_Interest");
+
+                    b.Navigation("Pr_In_Profile");
                 });
 
             modelBuilder.Entity("API.Models.RequestModel", b =>
                 {
                     b.HasOne("API.Models.ProfileModel", "Rq_Profile")
-                        .WithMany()
+                        .WithMany("Pr_RequestModel")
                         .HasForeignKey("Rq_ProfilePr_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -430,6 +454,11 @@ namespace API.Migrations
                     b.Navigation("Tr_Pre_Trip");
                 });
 
+            modelBuilder.Entity("API.Models.InterestModel", b =>
+                {
+                    b.Navigation("In_ProfileInterestModel");
+                });
+
             modelBuilder.Entity("API.Models.PreferenceModel", b =>
                 {
                     b.Navigation("Pre_TripPreferenceModel");
@@ -437,13 +466,17 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.ProfileModel", b =>
                 {
+                    b.Navigation("Pr_ApprovedPassengerModel");
+
                     b.Navigation("Pr_DeclinedModel");
 
-                    b.Navigation("Pr_ProfileInterests");
+                    b.Navigation("Pr_ProfileInterestModel");
 
                     b.Navigation("Pr_Rated");
 
                     b.Navigation("Pr_Rater");
+
+                    b.Navigation("Pr_RequestModel");
                 });
 
             modelBuilder.Entity("API.Models.TripModel", b =>

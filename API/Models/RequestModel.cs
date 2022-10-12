@@ -14,6 +14,5 @@ namespace API.Models
         public string Rq_Destination { get; set; } = String.Empty;
 
         public ProfileModel Rq_Profile { get; set; }
-        public TripModel Rq_Trip { get; set; }
     }
 }

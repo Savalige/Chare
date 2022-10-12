@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -32,7 +33,25 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CarModel>> GetCarModel(int id)
         {
-            var carModel = await _context.Cars.FindAsync(id);
+            var carModel = await _context.Cars.Where(c => c.Ca_Id == id)
+                .Include(c => c.Ca_Owner)
+                .FirstAsync();
+
+            if (carModel == null)
+            {
+                return NotFound();
+            }
+
+            return carModel;
+        }
+
+        // GET: api/Car/Profile/5
+        [HttpGet("Profile/{id}")]
+        public async Task<ActionResult<IEnumerable<CarModel>>> GetCarProfile(int id)
+        {
+            var carModel = await _context.Cars.Where(c => c.Ca_Owner.Pr_Id == id)
+                .Include(c => c.Ca_Owner)
+                .ToListAsync();
 
             if (carModel == null)
             {
@@ -76,13 +95,25 @@ namespace API.Controllers
         // POST: api/Car
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<CarModel>> PostCarModel(CarModel carModel)
+        public async Task<ActionResult<CarModel>> PostCarModel([FromForm] string cardata)
         {
+
+            dynamic m = JsonConvert.DeserializeObject(cardata);
+
+            CarModel carModel = new CarModel();
+
+            carModel.Ca_Model = m.ca_Model;
+            carModel.Ca_Owner = await _context.Profiles.FindAsync(Convert.ToInt32(m.ca_Owner.pr_Id));
+            carModel.Ca_Seats = m.ca_Seats;
+            carModel.Ca_Color = m.ca_Color;
+            carModel.Ca_Fuel = m.ca_Fuel;
+            carModel.Ca_FuelCon = m.ca_FuelCon;
             _context.Cars.Add(carModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCarModel", new { id = carModel.Ca_Id }, carModel);
         }
+
 
         // DELETE: api/Car/5
         [HttpDelete("{id}")]

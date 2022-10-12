@@ -13,8 +13,8 @@ namespace API.Models
         public int Tr_Price { get; set; }
         public string Tr_Destinations { get; set; } = string.Empty;
 
-        public CarModel Tr_Car { get; set; }
-        public ProfileModel Tr_Driver { get; set; }
+        public CarModel? Tr_Car { get; set; }
+        public ProfileModel? Tr_Driver { get; set; }
         public virtual ICollection<ApprovedPassengerModel>? Tr_ApprovedPassengers { get; set; }
         public virtual ICollection<RequestModel>? Tr_Requests { get; set; }
         public virtual ICollection<DeclinedModel>? Tr_DeclinedModel { get; set; }

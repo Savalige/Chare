@@ -21,15 +21,14 @@ namespace API.Models
         public string Pr_Password { get; set; } = String.Empty;
         public string Pr_Bio { get; set; } = String.Empty;
 
-        public virtual ICollection<TripModel>? Pr_Driver { get; set; }
-        public virtual ICollection<ApprovedPassengerModel>? Pr_ApprovedPassengerModel { get; set; }
-        public virtual ICollection<RequestModel>? Pr_RequestModel{ get; set; }
         public virtual ICollection<DeclinedModel>? Pr_DeclinedModel { get; set; }
-        public virtual ICollection<CarModel>? Pr_Cars { get; set; }
-        public virtual ICollection<ProfileInterestModel>? Pr_ProfileInterestModel { get; set; }
-        //TODO: Doublecheck that the db know which is which of rater and rated.  
+        //public virtual ICollection<ProfileInterestModel>? Pr_ProfileInterestModel { get; set; }
+        //TODO: Doublecheck that the db know which is which of rater and rated.
+        // Maybe have to change here? 
+        public virtual ICollection<InterestModel>? Pr_ProfileInterests { get; set; }
         public virtual ICollection<ReviewModel>? Pr_Rater { get; set; }
         public virtual ICollection<ReviewModel>? Pr_Rated { get; set; }
+
 
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -76,9 +77,22 @@ namespace API.Controllers
         // POST: api/Interest
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<InterestModel>> PostInterestModel(InterestModel interestModel)
+        public async Task<ActionResult<InterestModel>> PostInterestModel([FromForm] string interestData)
         {
+            dynamic i = JsonConvert.DeserializeObject(interestData);
+
+            InterestModel interestModel = new InterestModel();
+            interestModel.In_Text = i.in_Text;
+            interestModel.In_Emoji = i.in_Emoji;
+
             _context.Interests.Add(interestModel);
+
+            ProfileModel profile = await _context.Profiles.FindAsync(Convert.ToInt32(i.in_ProfileID));
+            if(profile.Pr_ProfileInterests == null)
+            {
+                profile.Pr_ProfileInterests = new List<InterestModel>();
+            }
+            profile.Pr_ProfileInterests.Add(interestModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetInterestModel", new { id = interestModel.In_Id }, interestModel);
