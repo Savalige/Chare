@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.puma.chare.CreateUserActivity
 import com.puma.chare.R
+import com.puma.chare.databinding.FragmentCreateUser2Binding
+import com.puma.chare.databinding.FragmentCreateUser3Binding
 
 class CreateUser3 : Fragment() {
 
@@ -15,12 +18,25 @@ class CreateUser3 : Fragment() {
     }
 
     private lateinit var viewModel: CreateUser3ViewModel
+    private var _binding: FragmentCreateUser3Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_create_user_3, container, false)
+        _binding = FragmentCreateUser3Binding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val button = binding.buttonUserCreateContinue3
+        button.setOnClickListener {
+            val act: CreateUserActivity = activity as CreateUserActivity
+            act.replaceFragments(CreateUser4());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

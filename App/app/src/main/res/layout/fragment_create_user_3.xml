@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:drawableLeft="@drawable/back_arrow"
         android:drawablePadding="10dp"
-        android:text="Profilinfo"
+        android:text="Personlig Beskrivning"
         android:textColor="@color/DarkPurple"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -253,7 +253,7 @@
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <Button
-        android:id="@+id/buttonUserCreateContinue2"
+        android:id="@+id/buttonUserCreateContinue3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -270,9 +270,9 @@
         android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
         android:textColor="@color/DarkestPurple"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue2"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue3"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue2" />
+        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue3" />
 
     <ImageView
         android:id="@+id/imageViewBottom"
