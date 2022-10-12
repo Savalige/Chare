@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/navigationCreate"
-        android:name="com.puma.chare.ui.create.create"
+        android:name="com.puma.chare.ui.create.Create"
         android:label="@string/title_create"
         tools:layout="@layout/fragment_create" />
 
@@ -32,9 +32,9 @@
 
     <fragment
         android:id="@+id/navigationProfile"
-        android:name="com.puma.chare.ui.profile.profile"
+        android:name="com.puma.chare.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_profile2" />
 
     <fragment
         android:id="@+id/loginFragment"

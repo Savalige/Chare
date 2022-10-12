@@ -20,7 +20,7 @@
         android:icon="@drawable/chat_outlined"
         android:title="@string/title_chat" />
     <item
-        android:id="@+id/loginFragment"
+        android:id="@+id/navigationProfile"
         android:icon="@drawable/profile_outlined"
         android:title="@string/title_profile" />
 

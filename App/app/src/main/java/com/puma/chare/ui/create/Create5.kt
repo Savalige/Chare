@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.puma.chare.MainActivity
 import com.puma.chare.R
+import com.puma.chare.databinding.FragmentCreate5Binding
+import com.puma.chare.ui.search.search
 
 class Create5 : Fragment() {
 
@@ -16,20 +19,25 @@ class Create5 : Fragment() {
     }
 
     private lateinit var viewModel: CreateViewModel
+    private var _binding: FragmentCreate5Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
-        val inflatedView = inflater.inflate(R.layout.fragment_create, container, false)
+        _binding = FragmentCreate5Binding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val submitButton = inflatedView.findViewById<Button>(R.id.buttonCont)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // When "fortsätt" button is pressed, submit the data to the API.
-        submitButton.setOnClickListener { viewModel.submitForm() }
-
-        return inflatedView
+        val button = binding.buttonCont
+        button.setOnClickListener {
+            val act:MainActivity = activity as MainActivity
+            act.replaceFragments(search());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
