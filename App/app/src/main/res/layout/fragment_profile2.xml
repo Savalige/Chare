@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="Namn"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Trips -->
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/userName">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/login_clouds"
+                app:civ_border_width="0dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tripsAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tripsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="resor"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    tools:text="resor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/amountDriven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/drivenText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="mil körda"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    tools:text="mil kört" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/amountTraveled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/traveledText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="åkta mil"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+                    android:textColor="@color/Black"
+                    tools:text="mil åkt" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bioText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textColor="@color/Black"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Intressen"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bioText" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/ThinButtonStyle"
+            android:text="Redigera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Rescensioner"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
