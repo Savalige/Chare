@@ -28,5 +28,6 @@ namespace API.Models
         public virtual ICollection<ReviewModel>? Pr_Rater { get; set; }
         public virtual ICollection<ReviewModel>? Pr_Rated { get; set; }
 
+
     }
 }

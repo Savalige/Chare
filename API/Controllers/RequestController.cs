@@ -33,7 +33,8 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<RequestModel>> GetRequestModel(int id)
         {
-            var requestModel = await _context.Requests.FindAsync(id);
+            var requestModel = await _context.Requests.Include(r => r.Rq_Profile).Where(r => r.Rq_Id == id)
+                .FirstAsync();
 
             if (requestModel == null)
             {
@@ -107,24 +108,37 @@ namespace API.Controllers
 
         // POST: api/Request/Accept/2
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*
-        [HttpPost("Accept/{id}")]
-        public async Task<ActionResult<RequestModel>> AcceptRequestModel(int id)
+        [HttpPost("Accept/{requestId}/{tripId}")]
+        public async Task<ActionResult> AcceptRequestModel(int requestId, int tripId)
         {
-            var request = _context.Requests.FindAsync(id);
+            RequestModel rq = await _context.Requests.Include(r => r.Rq_Profile).Where(r => r.Rq_Id == requestId)
+               .FirstAsync();
 
-            TripModel trip = await _context.Trips.FindAsync(Convert.ToInt32(m.rq_tripID));
-            if (trip.Tr_Requests == null)
+
+            ApprovedPassengerModel passenger = new ApprovedPassengerModel();
+            passenger.AP_Destination = rq.Rq_Destination;
+            passenger.AP_Start = rq.Rq_Start;
+            passenger.AP_Price = rq.Rq_Price;
+            passenger.AP_Passenger = rq.Rq_Profile;
+           
+
+            TripModel trip = await _context.Trips.FindAsync(tripId);
+
+            if (trip.Tr_ApprovedPassengers == null)
             {
-                trip.Tr_Requests = new List<RequestModel>();
+                trip.Tr_ApprovedPassengers = new List<ApprovedPassengerModel>();
             }
 
-            trip.Tr_Requests.Add(requestModel);
+            trip.Tr_ApprovedPassengers.Add(passenger);
+
+            trip.Tr_Requests.Remove(rq);
+            
+            _context.Requests.Remove(rq);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRequestModel", new { id = requestModel.Rq_Id }, requestModel);
-        }*/
+            return Ok();
+        }
 
         // DELETE: api/Request/5
         [HttpDelete("{id}")]
