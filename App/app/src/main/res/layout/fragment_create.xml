@@ -60,6 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputOrigin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/from" />
@@ -79,6 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputFran">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDestination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/to" />
@@ -98,6 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputTill">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/date" />
@@ -117,6 +120,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputDatum">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/time" />
