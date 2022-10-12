@@ -32,6 +32,7 @@
 
     <string name="sub_heading2">Välj rutt</string>
     <string name="rutt_btn">Lägg till stopp</string>
+    
     <string name="sub_heading3">Fordon och pris</string>
     <string name="vehicle">Fordon</string>
     <string name="change_vehicle">&#160;&#160;Byt fordon&#160;&#160;</string>
@@ -47,6 +48,7 @@
     <string name="luggage">Utrymme för bagage</string>
     <string name="ex_dep">Exakt avgångstid</string>
     <string name="dir_only">Endast direkttransport</string>
+    
     <!-- Profile -->
     <string name="profile_name">Alex Wahlroos</string>
     <string name="profile_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
