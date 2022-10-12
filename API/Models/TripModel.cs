@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace API.Models
 {
     [Table("Tbl_Trips")]
@@ -14,7 +13,12 @@ namespace API.Models
         public int Tr_Price { get; set; }
         public string Tr_Destinations { get; set; } = string.Empty;
 
-        //TODO: Preferences, approved, declined, driver, requested, car. 
+        public CarModel Tr_Car { get; set; }
+        public ProfileModel Tr_Driver { get; set; }
+        public virtual ICollection<ApprovedPassengerModel>? Tr_ApprovedPassengers { get; set; }
+        public virtual ICollection<RequestModel>? Tr_Requests { get; set; }
+        public virtual ICollection<DeclinedModel>? Tr_DeclinedModel { get; set; }
+        public virtual ICollection<TripPreferenceModel>? Tr_TripPreferenceModel { get; set; }
 
     }
 }
