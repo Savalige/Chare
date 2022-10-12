@@ -9,7 +9,8 @@
         android:id="@+id/navigationSearch"
         android:name="com.puma.chare.ui.search.search"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigationCreate"
