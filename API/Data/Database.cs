@@ -10,6 +10,7 @@ namespace API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // PROFILE INTERESTS
+            /*
             modelBuilder.Entity<ProfileInterestModel>()
             .HasKey(p => new { p.Pr_Id, p.In_Id });
 
@@ -21,7 +22,7 @@ namespace API.Data
             modelBuilder.Entity<ProfileInterestModel>()
                 .HasOne(p => p.Pr_In_Profile)
                 .WithMany(c => c.Pr_ProfileInterestModel)
-                .HasForeignKey(p => p.Pr_Id);
+                .HasForeignKey(p => p.Pr_Id);*/
 
             //DECLINED requests 
             modelBuilder.Entity<DeclinedModel>()
@@ -71,7 +72,7 @@ namespace API.Data
         public DbSet<DeclinedModel> DeclinedRequests { get; set; }
         public DbSet<InterestModel> Interests { get; set; }
         public DbSet<PreferenceModel> Preferences { get; set; }
-        public DbSet<ProfileInterestModel> ProfileInterests { get; set; }
+       // public DbSet<ProfileInterestModel> ProfileInterests { get; set; }
         public DbSet<ProfileModel> Profiles { get; set; }
         public DbSet<RequestModel> Requests { get; set; }
         public DbSet<ReviewModel> Reviews { get; set; }

@@ -86,27 +86,16 @@ namespace API.Controllers
             interestModel.In_Emoji = i.in_Emoji;
 
             _context.Interests.Add(interestModel);
-            await _context.SaveChangesAsync();
 
-            //await PostProfileInterest(interestModel.In_Id,Convert.ToInt32(i.in_ProfileID));
+            ProfileModel profile = await _context.Profiles.FindAsync(Convert.ToInt32(i.in_ProfileID));
+            if(profile.Pr_ProfileInterests == null)
+            {
+                profile.Pr_ProfileInterests = new List<InterestModel>();
+            }
+            profile.Pr_ProfileInterests.Add(interestModel);
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetInterestModel", new { id = interestModel.In_Id }, interestModel);
-        }
-
-        // POST: api/Interest/Connect/1/4
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("Connect/{interestid}/{profileid}")]
-        public async Task<ActionResult> PostProfileInterest(int interestid, int profileid)
-        {
-            
-            ProfileInterestModel pi = new ProfileInterestModel();
-            pi.Pr_In_Interest = await _context.Interests.FindAsync(interestid);
-            pi.Pr_In_Profile = await _context.Profiles.FindAsync(profileid);
-            _context.ProfileInterests.Add(pi);
-
-            await _context.SaveChangesAsync();
-
-            return Ok();
         }
 
         // DELETE: api/Interest/5

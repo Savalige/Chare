@@ -28,7 +28,7 @@ namespace API.Controllers
         {
             var profileModel = await _context.Profiles
                 .Where(p => p.Pr_Id == id)
-                .Include(pm => pm.Pr_ProfileInterestModel)
+                .Include(pm => pm.Pr_ProfileInterests)
                 .FirstAsync();
 
             if (profileModel == null)

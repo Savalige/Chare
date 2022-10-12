@@ -114,7 +114,6 @@ namespace API.Controllers
                 .Include(t => t.Tr_Car)
                 .Include(t => t.Tr_Driver)
                 .Include(t => t.Tr_ApprovedPassengers)
-                .Include(t => t.Tr_DeclinedModel)
                 .Include(t => t.Tr_Requests)
                 .Include(t => t.Tr_TripPreferenceModel)
                 .FirstOrDefaultAsync();
@@ -126,6 +125,27 @@ namespace API.Controllers
 
             return tripModel;
         }
+
+
+        // GET: api/Trip/Declined/5
+        [HttpGet("Declined/{id}")]
+        public async Task<ActionResult<object>> GetDeclined(int id)
+        {
+            var tripModel = await _context.Trips
+                .Where(t => t.Tr_Id == id)
+                .Select(t => t.Tr_DeclinedModel).ToListAsync();
+
+            if (tripModel == null)
+            {
+                return NotFound();
+            }
+
+            return tripModel;
+
+        }
+
+
+        // .Include(t => t.Tr_DeclinedModel)
 
         // POST: api/Trip
         [HttpPost]
