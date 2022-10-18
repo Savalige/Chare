@@ -22,6 +22,42 @@
     <string name="create_new_login">Skapa konto</string>
     <string name="no_user">Ingen användare?</string>
 
+    <!-- Strings related to create trip -->
+    <string name="continue_create">Fortsätt</string>
+    <string name="sub_heading">Välj destination och avresa</string>
+    <string name="create_trip">Skapa resa</string>
+    <string name="from">Från</string>
+    <string name="to">Till</string>
+    <string name="date">Datum</string>
+    <string name="time">Tid</string>
+    <string name="car_desc">Car illustration</string>
+
+    <string name="sub_heading2">Välj rutt</string>
+    <string name="rutt_btn">Lägg till stopp</string>
+    
+    <string name="sub_heading3">Fordon och pris</string>
+    <string name="vehicle">Fordon</string>
+    <string name="change_vehicle">&#160;&#160;Byt fordon&#160;&#160;</string>
+    <string name="available_seats">Antal lediga platser</string>
+    <string name="cost_example">Vårt förslag på pris</string>
+    <string name="cost_clarify">För varje person som åker med dig hela vägen får du</string>
+    <string name="btn_count">Hur har vi räknat?</string>
+
+    <string name="sub_heading4">Preferenser</string>
+    <string name="quiet_ride">Tyst i bilen</string>
+    <string name="allow_pets">Tillåt husdjur</string>
+    <string name="co_driving">Gemensam körning</string>
+    <string name="luggage">Utrymme för bagage</string>
+    <string name="ex_dep">Exakt avgångstid</string>
+    <string name="dir_only">Endast direkttransport</string>
+
+    <string name="sub_heading5">Sammanfattning</string>
+    <string name="via">via</string>
+    <string name="show_on_map">Visa på karta</string>
+    <string name="seats_available">platser lediga</string>
+    <string name="publish">Publicera resa</string>
+    <string name="preferences">Angivna preferenser</string>
+    
     <!-- Profile -->
     <string name="profile_name">Alex Wahlroos</string>
     <string name="profile_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -31,6 +67,7 @@
     <string name="profile_distance_traveled">mil åkt</string>
     <string name="profile_interests">Intressen</string>
     <string name="profile_reviews">Recensioner</string>
+
     <string name="title_activity_create_new_profile">CreateNewProfile</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -44,5 +81,4 @@
     <string name="menu_slideshow">Slideshow</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

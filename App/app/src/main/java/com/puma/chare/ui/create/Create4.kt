@@ -1,6 +1,5 @@
-package com.puma.chare.ui.createUser
+package com.puma.chare.ui.create
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,40 +9,41 @@ import android.view.ViewGroup
 import com.puma.chare.CreateUserActivity
 import com.puma.chare.MainActivity
 import com.puma.chare.R
-import com.puma.chare.databinding.FragmentCreateUser4Binding
+import com.puma.chare.databinding.FragmentCreate4Binding
+import com.puma.chare.ui.createUser.CreateUser2
 
-class CreateUser4 : Fragment() {
+class Create4 : Fragment() {
 
     companion object {
-        fun newInstance() = CreateUser4()
+        fun newInstance() = Create4()
     }
 
-    private lateinit var viewModel: CreateUser4ViewModel
-    private var _binding: FragmentCreateUser4Binding? = null
+    private lateinit var viewModel: CreateViewModel
+    private var _binding: FragmentCreate4Binding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCreateUser4Binding.inflate(inflater, container, false)
+        _binding = FragmentCreate4Binding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = binding.buttonUserCreateContinue3
+        val button = binding.buttonCont
         button.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(Create5());
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUser4ViewModel::class.java)
+        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
         // TODO: Use the ViewModel
     }
-
 }
