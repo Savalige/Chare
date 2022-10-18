@@ -2,12 +2,13 @@ package com.puma.chare.ui.create
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import com.puma.chare.R
+import com.puma.chare.MainActivity
+import com.puma.chare.databinding.FragmentCreateBinding
 import java.util.*
 
 class Create : Fragment() {
@@ -17,25 +18,45 @@ class Create : Fragment() {
     }
 
     private lateinit var viewModel: CreateViewModel
+    private var _binding: FragmentCreateBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentCreateBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
-        val inflatedView = inflater.inflate(R.layout.fragment_create, container, false)
 
-        // Get textviews by id from the inflated view.
-        // Changes in UI must be done after view is inflated.
-        val origin = inflatedView?.findViewById<EditText>(R.id.inputOrigin)?.text.toString()
-        val destination = inflatedView?.findViewById<EditText>(R.id.inputDestination)?.text.toString()
-        val date = inflatedView?.findViewById<EditText>(R.id.inputDateField)?.text.toString()
-        val time = inflatedView?.findViewById<EditText>(R.id.inputTimeField)?.text.toString()
 
-        // TODO: Pass date from input to part1ToViewModel instead of current date.
-        viewModel.part1ToViewModel(origin, destination, Date())
+        val button = binding.button
+        button.setOnClickListener {
+            Log.d("Info", "HERE");
+            Log.d("Info", binding.inputDate.editText?.text.toString());
 
-        return inflatedView
+            // Get textviews by id from the inflated view.
+            // Changes in UI must be done after view is inflated.
+            val origin = binding.inputOrigin.text.toString()
+            val destination = binding.inputDestination.text.toString()
+            val date = binding.inputDateField.text.toString()
+            val time = binding.inputTimeField.text.toString()
+
+            Log.d("Info", origin);
+            Log.d("Info", destination);
+
+            // TODO: Pass date from input to part1ToViewModel instead of current date.
+            viewModel.part1ToViewModel(origin, destination, Date())
+            
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(Create3());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

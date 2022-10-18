@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
     public fun replaceFragments(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.userCreateFragmentContainerView, fragment)
+            replace(R.id.nav_host_fragment_activity_main, fragment)
             commit()
         }
     }

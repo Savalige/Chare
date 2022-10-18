@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.puma.chare.MainActivity
 import com.puma.chare.R
+import com.puma.chare.databinding.FragmentCreate3Binding
 
 class Create3 : Fragment() {
 
@@ -15,17 +17,25 @@ class Create3 : Fragment() {
     }
 
     private lateinit var viewModel: CreateViewModel
+    private var _binding: FragmentCreate3Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
-        val inflatedView = inflater.inflate(R.layout.fragment_create, container, false)
+        _binding = FragmentCreate3Binding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Get data from the view and pass it to the viewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return inflatedView
+        val button = binding.buttonCont
+        button.setOnClickListener {
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(Create4());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
