@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.puma.chare.CreateUserActivity
 import com.puma.chare.R
-import com.puma.chare.databinding.FragmentCreateUser2Binding
 import com.puma.chare.databinding.FragmentCreateUser3Binding
 
 class CreateUser3 : Fragment() {
@@ -17,7 +16,7 @@ class CreateUser3 : Fragment() {
         fun newInstance() = CreateUser3()
     }
 
-    private lateinit var viewModel: CreateUser3ViewModel
+    private lateinit var viewModel: CreateUserViewModel
     private var _binding: FragmentCreateUser3Binding? = null
     private val binding get() = _binding!!
 
@@ -37,11 +36,17 @@ class CreateUser3 : Fragment() {
             val act: CreateUserActivity = activity as CreateUserActivity
             act.replaceFragments(CreateUser4());
         }
+
+        val backButton = binding.textBack
+        backButton.setOnClickListener {
+            val act: CreateUserActivity = activity as CreateUserActivity
+            act.replaceFragments(CreateUser2());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUser3ViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
