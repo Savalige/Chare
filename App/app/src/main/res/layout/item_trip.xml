@@ -10,9 +10,29 @@
         android:id="@+id/tripTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plats1 - Plats2"
+        android:text="Plats1"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tripTitleDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="-"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
+        app:layout_constraintStart_toEndOf="@id/tripTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tripTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Plats2"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
+        app:layout_constraintStart_toEndOf="@id/tripTitleDash"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -47,9 +67,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="x/X platser lediga"
+        android:text="x/X"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium.Chare"
         app:layout_constraintStart_toEndOf="@+id/seaticon"
+        app:layout_constraintTop_toBottomOf="@+id/tripDate" />
+
+    <TextView
+        android:id="@+id/tripSeatsAvailableText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/seats_available"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium.Chare"
+        app:layout_constraintStart_toEndOf="@+id/tripSeatsAvailable"
         app:layout_constraintTop_toBottomOf="@+id/tripDate" />
 
     <ImageView
@@ -94,13 +126,46 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:id="@+id/tripicon1"
+        style="@style/tripIconStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pet_icon" />
+        app:srcCompat="@drawable/pet_icon"/>
+
+    <ImageView
+        android:id="@+id/tripicon2"
+        style="@style/tripIconStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tripicon1"
+        app:srcCompat="@drawable/pet_icon"/>
+
+    <ImageView
+        android:id="@+id/tripicon3"
+        style="@style/tripIconStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tripicon2"
+        app:srcCompat="@drawable/pet_icon"/>
+
+    <ImageView
+        android:id="@+id/tripicon4"
+        style="@style/tripIconStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tripicon3"
+        app:srcCompat="@drawable/pet_icon"/>
+
+    <ImageView
+        android:id="@+id/tripicon5"
+        style="@style/tripIconStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tripicon4"
+        app:srcCompat="@drawable/pet_icon"/>
+
+    <ImageView
+        android:id="@+id/tripicon6"
+        style="@style/tripIconStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tripicon5"
+        app:srcCompat="@drawable/pet_icon"/>
 
     <TextView
         android:id="@+id/textView7"
