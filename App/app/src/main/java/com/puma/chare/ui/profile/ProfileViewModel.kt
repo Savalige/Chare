@@ -1,22 +1,27 @@
 package com.puma.chare.ui.profile
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
+import androidx.lifecycle.viewModelScope
 import com.google.gson.GsonBuilder
 import com.puma.chare.models.Profile
+import com.puma.chare.repository.Repository
 import com.puma.chare.ui.Network
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class ProfileViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-    public fun fetchData(): Profile {
-         val jsonString = runBlocking {
-             // TODO: Remove hardcoded profile, supply credentials.
-             return@runBlocking Network.getAsync("http://10.0.2.2:5256/api/Profile/1").await()
-         }
-        val gson = GsonBuilder().setDateFormat("yyyy-mm-dd'T'HH:mm:ss").create()
+class ProfileViewModel() : ViewModel() {
 
-        return gson.fromJson(jsonString, Profile::class.java)
+    val profile: MutableLiveData<Profile> = MutableLiveData()
+
+    fun getProfile(): Job {
+        val repository = Repository()
+
+        return viewModelScope.launch {
+            val response = repository.getProfile("1")
+            profile.value = response
+        }
     }
 }

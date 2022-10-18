@@ -15,34 +15,31 @@ import com.puma.chare.ui.search.SearchViewModel
 class ProfileFragment : Fragment() {
 
     lateinit var profileViewModel: ProfileViewModel
+    lateinit var inflatedView: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        this.inflatedView = inflater.inflate(R.layout.fragment_profile2, container, false)
 
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
-
-        // Fetch the profile data.
-        val profile: Profile = profileViewModel.fetchData()
-
-        val inflatedView = inflater.inflate(R.layout.fragment_profile2, container, false)
-
-        // Get textviews by id from the inflated view.
-        val title = inflatedView?.findViewById<TextView>(R.id.userName)
-        val tripsAmount = inflatedView?.findViewById<TextView>(R.id.tripsAmount)
-        val drivenAmount = inflatedView?.findViewById<TextView>(R.id.amountDriven)
-        val traveledAmount = inflatedView?.findViewById<TextView>(R.id.amountTraveled)
-        val bio = inflatedView?.findViewById<TextView>(R.id.bioText)
-
-        // Set textviews to fetched data.
-        title?.text = profile.pr_Firstname + " " + profile.pr_Lastname
-        tripsAmount?.text = profile.pr_RideNum.toString()
-        drivenAmount?.text = profile.pr_DriveDistance.toString()
-        traveledAmount?.text = profile.pr_RideDistance.toString()
-        bio?.text = profile.pr_Bio
-
+        profileViewModel.getProfile()
+        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
+            run {
+                Log.d("test", profile.pr_Firstname)
+                setText(R.id.userName, profile.pr_Firstname + ' ' + profile.pr_Lastname)
+                setText(R.id.bioText, profile.pr_Bio)
+                setText(R.id.tripsAmount, profile.pr_RideNum.toString())
+                setText(R.id.amountDriven, profile.pr_DriveDistance.toString())
+                setText(R.id.amountTraveled, profile.pr_RideDistance.toString())
+            }
+        }
         return inflatedView
+    }
+
+    private fun setText(id: Int, text: String) {
+        inflatedView.findViewById<TextView>(id)?.text = text
     }
 }
