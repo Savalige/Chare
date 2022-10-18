@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.search"
     android:orientation="vertical"
-    android:gravity="top">
+    android:gravity="top"
+    android:background="@color/White">
 
     <ImageView
         android:id="@+id/imageView"
