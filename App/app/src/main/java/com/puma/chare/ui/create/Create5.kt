@@ -1,12 +1,15 @@
 package com.puma.chare.ui.create
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.puma.chare.CreateUserActivity
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreate5Binding
@@ -35,8 +38,8 @@ class Create5 : Fragment() {
 
         val button = binding.buttonCont
         button.setOnClickListener {
-            val act:MainActivity = activity as MainActivity
-            act.replaceFragments(search());
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

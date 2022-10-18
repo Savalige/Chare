@@ -34,7 +34,7 @@
 
     <string name="sub_heading2">Välj rutt</string>
     <string name="rutt_btn">Lägg till stopp</string>
-    
+
     <string name="sub_heading3">Fordon och pris</string>
     <string name="vehicle">Fordon</string>
     <string name="change_vehicle">&#160;&#160;Byt fordon&#160;&#160;</string>
@@ -57,7 +57,7 @@
     <string name="seats_available">platser lediga</string>
     <string name="publish">Publicera resa</string>
     <string name="preferences">Angivna preferenser</string>
-    
+
     <!-- Profile -->
     <string name="profile_name">Alex Wahlroos</string>
     <string name="profile_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -79,6 +79,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
