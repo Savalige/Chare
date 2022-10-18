@@ -40,4 +40,12 @@
         <item name="cornerRadius">10dp</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="tripIconStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="tint">@color/DarkGray</item>
+    </style>
 </resources>
