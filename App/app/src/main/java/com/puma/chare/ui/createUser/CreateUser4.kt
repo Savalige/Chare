@@ -18,7 +18,7 @@ class CreateUser4 : Fragment() {
         fun newInstance() = CreateUser4()
     }
 
-    private lateinit var viewModel: CreateUser4ViewModel
+    private lateinit var viewModel: CreateUserViewModel
     private var _binding: FragmentCreateUser4Binding? = null
     private val binding get() = _binding!!
 
@@ -38,11 +38,17 @@ class CreateUser4 : Fragment() {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val backButton = binding.textBack
+        backButton.setOnClickListener {
+            val act: CreateUserActivity = activity as CreateUserActivity
+            act.replaceFragments(CreateUser3());
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUser4ViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
