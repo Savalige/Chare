@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -79,10 +79,10 @@
         android:textColor="@color/DarkGray"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/bioText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -103,7 +103,7 @@
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/bioText"
         tools:layout="@layout/fragment_intrest" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -120,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/carModelText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -132,15 +132,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/numSeatsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/seat"
             android:text="4 säten"
             android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
             android:textColor="@color/Black"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintStart_toStartOf="@+id/fuelEcoText"
+            app:layout_constraintTop_toBottomOf="@+id/fuelEcoText" />
 
         <ImageView
             android:id="@+id/imageView13"
@@ -148,12 +148,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:src="@drawable/car"
-            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintBottom_toBottomOf="@+id/carModelText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView10" />
+            app:layout_constraintTop_toTopOf="@+id/carModelText" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/fuelEcoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -162,7 +162,7 @@
             android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
             android:textColor="@color/Black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/carModelText" />
 
         <TextView
             android:id="@+id/textView9"
@@ -176,7 +176,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/buttonUserCreateContinue3"
+        android:id="@+id/submitNewProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

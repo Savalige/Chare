@@ -66,14 +66,27 @@
                 android:hint="Från" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/submitButton"
-            style="@style/LargeButtonStyle"
-            android:layout_marginTop="20dp"
-            android:text="@string/search_journey"
+        <DatePicker
+            android:id="@+id/editTextDateSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Datum"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/destination" />
+
+        <Button
+            android:id="@+id/submitButton"
+            style="@style/LargeButtonStyle"
+            android:layout_marginTop="16dp"
+            android:text="@string/search_journey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateSearch" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
