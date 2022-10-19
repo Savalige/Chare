@@ -1,6 +1,5 @@
 package com.puma.chare.ui.createUser
 
-import android.content.Intent
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
@@ -8,18 +7,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import com.puma.chare.CreateTripActivity
-import com.puma.chare.MainActivity
-import com.puma.chare.R
-import com.puma.chare.databinding.FragmentCreateUser1Binding
-import com.puma.chare.databinding.FragmentLoginBinding
 import com.puma.chare.CreateUserActivity
+import com.puma.chare.databinding.FragmentCreateUser1Binding
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.temporal.ChronoField
+import java.time.temporal.TemporalAccessor
 import java.util.*
-import com.puma.chare.CreateUserActivity as CreateUser1
 
 
 class CreateUser : Fragment() {
@@ -31,6 +29,7 @@ class CreateUser : Fragment() {
     private lateinit var viewModel: CreateUserViewModel
     private var _binding: FragmentCreateUser1Binding? = null
     private val binding get() = _binding!!
+    private val format: String = "dd.MM.yyyy"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +50,7 @@ class CreateUser : Fragment() {
         }
 
         val dateEdit = binding.editTextDate
-        val formater = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
+        val formater = SimpleDateFormat(format).format(System.currentTimeMillis())
         dateEdit.setText(formater)
 
         val cal = Calendar.getInstance();
@@ -61,8 +60,8 @@ class CreateUser : Fragment() {
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            val myFormat = "dd.MM.yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            // mention the format you need
+            val sdf = SimpleDateFormat(format, Locale.US)
             dateEdit.setText(sdf.format(cal.time))
         }
 
@@ -85,10 +84,28 @@ class CreateUser : Fragment() {
     }
 
     fun onButtonPress() {
+        // Get time string from input field.
+        val timeString: String = binding.editTextDate.text.toString()
+
+        val FMT: DateTimeFormatter = DateTimeFormatterBuilder()
+            .appendPattern(format)
+            .parseDefaulting(ChronoField.NANO_OF_DAY, 0)
+            .toFormatter()
+            .withZone(ZoneId.of("Europe/Stockholm"))
+
+        // Convert time strint to Instant.
+        val instant = FMT.parse(
+            timeString
+        ) { temporal: TemporalAccessor? ->
+            Instant.from(
+                temporal
+            )
+        }
+
         viewModel.passFragment1DataToViewModel(
             binding.editUserFirstname.text.toString(),
             binding.editUserLastName.text.toString(),
-            binding.editTextDate.text.toString(),
+            instant,
             binding.editTextTextEmailAddress.text.toString(),
             binding.editTextTextPassword.text.toString())
     }

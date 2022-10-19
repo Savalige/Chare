@@ -11,6 +11,8 @@ import com.puma.chare.CreateUserActivity
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateUser4Binding
+import java.time.Instant
+import java.time.LocalDate
 import java.util.*
 
 class CreateUser4 : Fragment() {
@@ -43,8 +45,8 @@ class CreateUser4 : Fragment() {
         setFields()
 
         val button = binding.submitNewProfileButton
-        viewModel.submitProfile()
         button.setOnClickListener {
+            viewModel.submitProfile()
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         }
@@ -65,11 +67,11 @@ class CreateUser4 : Fragment() {
         val profile = viewModel.getProfile()
         val car = viewModel.getCar()
         binding.nameText.text = profile.pr_Firstname + " " + profile.pr_Lastname
-        val diff = Date().time - profile.pr_BirthDate?.time!!
-        binding.ageText.text = Date(diff).year.toString()
+        val age = Date.from(Instant.now()).year - Date.from(Instant.parse(profile.pr_BirthDate)).year
+        binding.ageText.text = "$age år"
         binding.bioText.text = profile.pr_Bio
         binding.carModelText.text = car.Ca_Model
-        binding.fuelEcoText.text = car.Ca_FuelCon.toString()
-        binding.numSeatsText.text = car.Ca_Seats.toString()
+        binding.fuelEcoText.text = car.Ca_FuelCon.toString() + " liter / mil"
+        binding.numSeatsText.text = car.Ca_Seats.toString() + " lediga säten"
     }
 }

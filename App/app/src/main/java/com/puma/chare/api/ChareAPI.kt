@@ -1,6 +1,8 @@
 package com.puma.chare.api
 
+import com.puma.chare.models.Car
 import com.puma.chare.models.Profile
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -10,5 +12,8 @@ interface ChareAPI {
     suspend fun getProfile(@Path("id") id: String): Profile
 
     @POST("Profile")
-    suspend fun postProfile(profile: Profile)
+    suspend fun postProfile(@Body profile: Profile): Profile
+
+    @POST("Car")
+    suspend fun postCar(@Body car: Car): Car
 }
