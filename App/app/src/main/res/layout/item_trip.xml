@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@drawable/layout_bg">
-
+    android:background="@drawable/layout_bg"
+    android:layout_marginBottom="24dp">
     <TextView
         android:id="@+id/tripTitle"
         android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center|bottom"
         android:paddingBottom="10dp"
-        android:text="123 kr"
+        android:text="---"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

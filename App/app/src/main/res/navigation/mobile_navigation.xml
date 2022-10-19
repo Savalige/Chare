@@ -13,6 +13,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigationSearchResult"
+        android:name="com.puma.chare.ui.search.SearchResults"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search_results" >
+    </fragment>
+
+    <fragment
         android:id="@+id/navigationCreate"
         android:name="com.puma.chare.ui.create.Create"
         android:label="@string/title_create"
