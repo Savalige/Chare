@@ -51,5 +51,20 @@
         android:name="com.puma.chare.ui.createUser.CreateUser"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/create3Fragment"
+        android:name="com.puma.chare.ui.create.Create3"
+        android:label="fragment_create3"
+        tools:layout="@layout/fragment_create3" />
+    <fragment
+        android:id="@+id/create4Fragment"
+        android:name="com.puma.chare.ui.create.Create4"
+        android:label="fragment_create4"
+        tools:layout="@layout/fragment_create4" />
+    <fragment
+        android:id="@+id/create5Fragment"
+        android:name="com.puma.chare.ui.create.Create5"
+        android:label="fragment_create5"
+        tools:layout="@layout/fragment_create5" />
 
 </navigation>

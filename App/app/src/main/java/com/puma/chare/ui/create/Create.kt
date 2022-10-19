@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.puma.chare.CreateTripActivity
+import com.puma.chare.MainActivity
+import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateBinding
 import java.util.*
 
@@ -54,8 +55,8 @@ class Create : Fragment() {
             // TODO: Pass date from input to part1ToViewModel instead of current date.
             viewModel.part1ToViewModel(origin, destination, Date())
             
-            val act: CreateTripActivity = activity as CreateTripActivity
-            act.replaceFragments(Create3());
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.create3Fragment, View.GONE);
         }
     }
 
