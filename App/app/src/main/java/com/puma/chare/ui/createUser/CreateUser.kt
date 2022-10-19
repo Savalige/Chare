@@ -1,17 +1,19 @@
 package com.puma.chare.ui.createUser
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.puma.chare.CreateTripActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateUser1Binding
 import com.puma.chare.databinding.FragmentLoginBinding
-import com.puma.chare.CreateUserActivity as CreateUser1
-
+import com.puma.chare.CreateUserActivity
 
 class CreateUser : Fragment() {
 
@@ -37,24 +39,24 @@ class CreateUser : Fragment() {
         val button = binding.userCreateButtonContinue1
         button.setOnClickListener {
             onButtonPress()
-            val act:CreateUser1 = activity as com.puma.chare.CreateUserActivity
+            val act: CreateUserActivity = activity as CreateUserActivity
             act.replaceFragments(CreateUser2());
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
+        viewModel = ViewModelProvider(activity as CreateUserActivity).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
     fun onButtonPress() {
         viewModel.passFragment1DataToViewModel(
-            binding.editUserFirstname.toString(),
-            binding.editUserLastName.toString(),
-            binding.editTextDate.toString(),
-            binding.editTextTextEmailAddress.toString(),
-            binding.editTextTextPassword.toString())
+            binding.editUserFirstname.text.toString(),
+            binding.editUserLastName.text.toString(),
+            binding.editTextDate.text.toString(),
+            binding.editTextTextEmailAddress.text.toString(),
+            binding.editTextTextPassword.text.toString())
     }
 
 }

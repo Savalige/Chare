@@ -7,7 +7,7 @@ import java.util.Date
 
 class CreateUserViewModel : ViewModel() {
     private val profile: Profile = Profile()
-    private lateinit var car: Car
+    private var car: Car = Car()
 
     fun passFragment1DataToViewModel(firstname: String,lastname: String, birthdate: String,
                                      email: String, password: String){
@@ -29,10 +29,10 @@ class CreateUserViewModel : ViewModel() {
         return profile
     }
     public fun getCar(): Car {
-        return car
+        return this.car
     }
 
     fun submitProfile() {
-
+        // Perform API call
     }
 }

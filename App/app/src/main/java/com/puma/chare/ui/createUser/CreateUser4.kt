@@ -28,8 +28,14 @@ class CreateUser4 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreateUser4Binding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(activity as CreateUserActivity)[CreateUserViewModel::class.java]
         return binding.root
     }
+
+    /*override fun onResume() {
+        super.onResume()
+        setFields()
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +58,6 @@ class CreateUser4 : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
