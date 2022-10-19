@@ -1,15 +1,20 @@
 package com.puma.chare.ui.createUser
 
+import android.app.DatePickerDialog
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateUser1Binding
 import com.puma.chare.databinding.FragmentLoginBinding
+import java.util.*
 import com.puma.chare.CreateUserActivity as CreateUser1
 
 
@@ -40,6 +45,63 @@ class CreateUser : Fragment() {
             val act:CreateUser1 = activity as com.puma.chare.CreateUserActivity
             act.replaceFragments(CreateUser2());
         }
+
+        val dateEdit = binding.editTextDate
+        val formater = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
+        dateEdit.setText(formater)
+
+        //
+        //"EEE, MMM d, ''yy"
+        val cal = Calendar.getInstance();
+
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "dd.MM.yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            dateEdit.setText(sdf.format(cal.time))
+        }
+
+        //activity!!.applicationContext
+        dateEdit.setOnClickListener {
+            Log.d("info","hej")
+            activity?.let { it1 ->
+                DatePickerDialog(
+                    it1,dateSetListener,
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
+            }
+        }
+
+
+
+        /*
+val textView: TextView  = (EditText)findViewById(R.id.editTextDate)
+textView.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
+
+var cal = Calendar.getInstance()
+
+val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+    cal.set(Calendar.YEAR, year)
+    cal.set(Calendar.MONTH, monthOfYear)
+    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+    val myFormat = "dd.MM.yyyy" // mention the format you need
+    val sdf = SimpleDateFormat(myFormat, Locale.US)
+    textView.text = sdf.format(cal.time)
+
+}
+
+textView.setOnClickListener {
+    DatePickerDialog(this@MainActivity, dateSetListener,
+        cal.get(Calendar.YEAR),
+        cal.get(Calendar.MONTH),
+        cal.get(Calendar.DAY_OF_MONTH)).show()
+}
+*/
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

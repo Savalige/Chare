@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigationTrips)
             }
             if (it.itemId == R.id.navigationProfile) {
-                navController.navigate(R.id.navigationProfile)
+                navController.navigate(R.id.createUserFragment)
             }
 
             true
