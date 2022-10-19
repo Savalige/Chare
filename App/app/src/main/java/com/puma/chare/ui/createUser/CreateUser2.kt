@@ -31,8 +31,9 @@ class CreateUser2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = binding.buttonUserCreateContinue3
+        val button = binding.fragment2NextButton
         button.setOnClickListener {
+            submitDataToViewModel()
             val act: CreateUserActivity = activity as CreateUserActivity
             act.replaceFragments(CreateUser3());
         }
@@ -48,6 +49,11 @@ class CreateUser2 : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    fun submitDataToViewModel() {
+        viewModel.passFragment2DataToViewModel(binding.editTextTextMultiLine.text.toString())
+
     }
 
 }

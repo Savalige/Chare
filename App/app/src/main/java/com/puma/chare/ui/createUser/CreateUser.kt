@@ -36,6 +36,7 @@ class CreateUser : Fragment() {
 
         val button = binding.userCreateButtonContinue1
         button.setOnClickListener {
+            onButtonPress()
             val act:CreateUser1 = activity as com.puma.chare.CreateUserActivity
             act.replaceFragments(CreateUser2());
         }
@@ -45,6 +46,15 @@ class CreateUser : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    fun onButtonPress() {
+        viewModel.passFragment1DataToViewModel(
+            binding.editUserFirstname.toString(),
+            binding.editUserLastName.toString(),
+            binding.editTextDate.toString(),
+            binding.editTextTextEmailAddress.toString(),
+            binding.editTextTextPassword.toString())
     }
 
 }

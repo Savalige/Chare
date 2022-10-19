@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.puma.chare.CreateUserActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateUser3Binding
+import com.puma.chare.models.Car
 
 class CreateUser3 : Fragment() {
 
@@ -31,8 +32,9 @@ class CreateUser3 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = binding.buttonUserCreateContinue3
+        val button = binding.fragment3NextButton
         button.setOnClickListener {
+            submitToViewModel()
             val act: CreateUserActivity = activity as CreateUserActivity
             act.replaceFragments(CreateUser4());
         }
@@ -48,6 +50,18 @@ class CreateUser3 : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    fun submitToViewModel() {
+        val car = Car()
+        car.Ca_Model = binding.editCarModel.text.toString()
+        car.Ca_Color = "Svart"
+        car.Ca_Seats = binding.editSeatsAvaliable.text.toString().toInt()
+        car.Ca_Fuel = binding.fuelSwitch.isActivated.toString()
+        if(binding.fuelSwitch.isActivated) car.Ca_Fuel = "Diesel"
+        else car.Ca_Fuel = "Bensin"
+        // TODO: Remove hardcoded value
+        car.Ca_FuelCon = 0.7
     }
 
 }
