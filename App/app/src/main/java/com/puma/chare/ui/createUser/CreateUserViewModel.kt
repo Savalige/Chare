@@ -40,7 +40,7 @@ class CreateUserViewModel : ViewModel() {
         val repo = Repository()
         viewModelScope.launch {
             val fetchedProfile: Profile = repo.postProfile(profile)
-            car.Ca_Owner = fetchedProfile
+            car.ca_Owner = fetchedProfile
             val car: Car = repo.postCar(car)
             // will go bad.
         }

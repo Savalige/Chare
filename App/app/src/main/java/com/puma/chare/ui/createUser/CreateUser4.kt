@@ -70,8 +70,8 @@ class CreateUser4 : Fragment() {
         val age = Date.from(Instant.now()).year - Date.from(Instant.parse(profile.pr_BirthDate)).year
         binding.ageText.text = "$age år"
         binding.bioText.text = profile.pr_Bio
-        binding.carModelText.text = car.Ca_Model
-        binding.fuelEcoText.text = car.Ca_FuelCon.toString() + " liter / mil"
-        binding.numSeatsText.text = car.Ca_Seats.toString() + " lediga säten"
+        binding.carModelText.text = car.ca_Model
+        binding.fuelEcoText.text = car.ca_FuelCon.toString() + " liter / mil"
+        binding.numSeatsText.text = car.ca_Seats.toString() + " lediga säten"
     }
 }
