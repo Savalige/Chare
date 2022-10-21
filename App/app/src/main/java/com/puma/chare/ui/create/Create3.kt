@@ -34,7 +34,7 @@ class Create3 : Fragment() {
         val button = binding.buttonCont
         button.setOnClickListener {
             val act: MainActivity = activity as MainActivity
-            act.replaceFragments(R.id.create4Fragment, View.GONE);
+            act.replaceFragments(R.id.create4Fragment, View.VISIBLE);
         }
     }
 

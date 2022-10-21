@@ -63,7 +63,7 @@ class Create : Fragment() {
             viewModel.part1ToViewModel(origin, destination, Date())
             
             val act: MainActivity = activity as MainActivity
-            act.replaceFragments(R.id.create3Fragment, View.GONE);
+            act.replaceFragments(R.id.create3Fragment, View.VISIBLE);
         }
     }
 
