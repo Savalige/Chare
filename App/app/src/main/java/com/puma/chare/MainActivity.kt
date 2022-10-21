@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigationSearch)
             }
             if (it.itemId == R.id.navigationChat) {
-                navController.navigate(R.id.navigationChat)
+                navController.navigate(R.id.navigationSearchResult)
             }
             if (it.itemId == R.id.navigationTrips) {
-                navController.navigate(R.id.navigationTrips)
+                navController.navigate(R.id.navigationTripDetail)
             }
             if (it.itemId == R.id.navigationProfile) {
                 val intent = Intent(this, CreateUserActivity::class.java)

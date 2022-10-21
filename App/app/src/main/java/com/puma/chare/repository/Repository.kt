@@ -14,6 +14,11 @@ class Repository {
     suspend fun getProfile(id: String): Profile {
         return RetrofitInstance.api.getProfile(id)
     }
+
+    suspend fun getTrip(id: String): Trip {
+        return RetrofitInstance.api.getTrip(id)
+    }
+
     suspend fun postProfile(profile: Profile): Profile {
         return RetrofitInstance.api.postProfile(profile)
     }

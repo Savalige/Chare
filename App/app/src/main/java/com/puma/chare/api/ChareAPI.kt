@@ -21,9 +21,14 @@ interface ChareAPI {
     @GET("Trips/Search/{query}")
     suspend fun getTripsFromSearch(@Path("id")query: String): ArrayList<Trip>
 
+    @GET("Trip/{id}")
+    suspend fun getTrip(@Path("id") id: String): Trip
+
     @POST("Profile")
     suspend fun postProfile(@Body profile: Profile): Profile
 
     @POST("Car")
     suspend fun postCar(@Body car: RequestBody): Car
+
+
 }
