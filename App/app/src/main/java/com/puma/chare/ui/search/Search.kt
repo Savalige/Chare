@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.puma.chare.MainActivity
 import com.puma.chare.R
-import com.puma.chare.databinding.FragmentCreateBinding
 import com.puma.chare.databinding.FragmentSearchBinding
-import com.puma.chare.ui.create.Create3
-import com.puma.chare.ui.create.CreateViewModel
+import com.puma.chare.ui.createUser.CreateUser2
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
-import java.time.temporal.ChronoField
 import java.time.temporal.TemporalAccessor
 import java.util.*
 
@@ -30,10 +27,10 @@ class Test(test: Int) {
     val test: Int = test
 }
 
-class search : Fragment() {
+class Search : Fragment() {
 
     companion object {
-        fun newInstance() = search()
+        fun newInstance() = Search()
     }
 
     private lateinit var searchViewModel: SearchViewModel
@@ -60,7 +57,7 @@ class search : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        searchViewModel = ViewModelProvider(activity as MainActivity)[SearchViewModel::class.java]
 
         setUpDatePicker()
         setUpTimePicker()
@@ -100,6 +97,9 @@ class search : Fragment() {
         // Origin and destination is ready to be used.
         // Eg. send to next view or to API for processing.
         searchViewModel.handleSubmit(origin, destination, instant)
+
+        val act: MainActivity = activity as MainActivity
+        act.replaceFragments(R.id.searchResults, View.VISIBLE)
     }
 
     private fun setUpDatePicker(){
