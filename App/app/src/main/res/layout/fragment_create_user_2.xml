@@ -30,7 +30,7 @@
         android:layout_marginTop="16dp"
         android:drawableLeft="@drawable/back_arrow"
         android:drawablePadding="10dp"
-        android:text="Profilinfo"
+        android:text="Välj destination"
         android:textColor="@color/DarkPurple"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,11 +100,11 @@
         android:id="@+id/fragment2NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:text="Fortsätt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -124,7 +124,7 @@
         android:textColor="@color/DarkestPurple"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/fragment2NextButton"
-        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+        app:layout_constraintStart_toStartOf="@+id/fragmentContainerView2"
         app:layout_constraintTop_toTopOf="@+id/fragment2NextButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
