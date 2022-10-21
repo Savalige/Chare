@@ -91,4 +91,6 @@
     <string name="kr">kr</string>
     <string name="about_travellers">Om resande</string>
     <string name="driver_pref">Angett av föraren</string>
+    <string name="apply">Ansök</string>
+    <string name="contact_driver">Kontakta föraren privat</string>
 </resources>

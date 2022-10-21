@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigationSearchResult)
             }
             if (it.itemId == R.id.navigationTrips) {
-                navController.navigate(R.id.navigationTrips)
+                navController.navigate(R.id.navigationTripDetail)
             }
             if (it.itemId == R.id.navigationProfile) {
                 navController.navigate(R.id.navigationProfile)

@@ -153,7 +153,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="800dp"
         android:layout_marginLeft="@dimen/fragment_horizontal_margin"
         android:layout_marginTop="20dp"
         android:layout_marginRight="@dimen/fragment_horizontal_margin"
@@ -291,7 +291,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
-                android:text="xx"
+                android:text="--"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge.Chare"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView29"
@@ -336,6 +336,34 @@
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium.Chare"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+
+        <Button
+            android:id="@+id/button13"
+            style="@style/LargeButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/contact_driver"
+
+            android:backgroundTint="@android:color/transparent"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
+            android:textColor="@color/DarkPurple"
+            android:stateListAnimator="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
