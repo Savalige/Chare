@@ -13,12 +13,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
-import com.puma.chare.CreateTripActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateBinding
 import com.puma.chare.databinding.FragmentSearchBinding
 import com.puma.chare.ui.create.Create3
 import com.puma.chare.ui.create.CreateViewModel
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.temporal.ChronoField
+import java.time.temporal.TemporalAccessor
 import java.util.*
 
 class Test(test: Int) {
@@ -76,10 +81,25 @@ class search : Fragment() {
 
         val origin = originInput.text.toString()
         val destination = destinationInput.text.toString()
+        val datetimeString = binding.editTextDateSearch.text.toString() + ";" + binding.editTextTimeSearch.text.toString()
+
+        val FMT: DateTimeFormatter = DateTimeFormatterBuilder()
+            .appendPattern("dd.MM.yyyy;HH:mm")
+            .toFormatter()
+            .withZone(ZoneId.of("Europe/Stockholm"))
+
+        // Convert time strint to Instant.
+        val instant = FMT.parse(
+            datetimeString
+        ) { temporal: TemporalAccessor? ->
+            Instant.from(
+                temporal
+            )
+        }
 
         // Origin and destination is ready to be used.
         // Eg. send to next view or to API for processing.
-        searchViewModel.handleSubmit(origin, destination)
+        searchViewModel.handleSubmit(origin, destination, instant)
     }
 
     private fun setUpDatePicker(){

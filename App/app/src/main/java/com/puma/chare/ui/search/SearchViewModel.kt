@@ -1,16 +1,26 @@
 package com.puma.chare.ui.search
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.android.material.textfield.TextInputEditText
+import com.puma.chare.models.Trip
+import com.puma.chare.repository.Repository
 import com.puma.chare.ui.Network
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.time.Instant
 
 class SearchViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-    private val url: String = "http://10.0.2.2:5256/api/"
 
-    public fun handleSubmit(origin: String, destination: String) {
-        val result: String = runBlocking { return@runBlocking Network.getAsync(url + "Profile/1").await() }
+    val trips: MutableLiveData<ArrayList<Trip>> = MutableLiveData()
+
+    public fun handleSubmit(origin: String, destination: String, datetime: Instant) {
+        val repo = Repository()
+        viewModelScope.launch {
+            val response = repo.getTripsFromSearch(origin, destination, datetime, "" )
+            trips.value = response
+        }
     }
 }
