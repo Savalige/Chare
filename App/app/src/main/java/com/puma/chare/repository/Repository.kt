@@ -32,9 +32,7 @@ class Repository {
         return RetrofitInstance.api.postCar(body)
     }
 
-    suspend fun getTripsFromSearch(start: String, end: String, datetime: Instant,
-                                   preferences: String): ArrayList<Trip> {
-        val query = "${start},${end},${datetime.toString()},${preferences}"
-        return RetrofitInstance.api.getTripsFromSearch(query)
+    suspend fun getTripsFromSearch(start: String, end: String, datetime: Instant, ): ArrayList<Trip> {
+        return RetrofitInstance.api.getTripsFromSearch(start, end, datetime.toString())
     }
 }

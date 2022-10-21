@@ -14,12 +14,12 @@ import java.time.Instant
 
 class SearchViewModel : ViewModel() {
 
-    val trips: MutableLiveData<ArrayList<Trip>> = MutableLiveData()
+    val trips: MutableLiveData<List<Trip>> = MutableLiveData()
 
     public fun handleSubmit(origin: String, destination: String, datetime: Instant) {
         val repo = Repository()
         viewModelScope.launch {
-            val response = repo.getTripsFromSearch(origin, destination, datetime, "" )
+            val response = repo.getTripsFromSearch(origin, destination, datetime)
             trips.value = response
         }
     }
