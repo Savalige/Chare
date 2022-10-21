@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreate4Binding
+import com.puma.chare.models.Preference
 
 class Create4 : Fragment() {
 
@@ -19,6 +20,7 @@ class Create4 : Fragment() {
     private lateinit var viewModel: CreateViewModel
     private var _binding: FragmentCreate4Binding? = null
     private val binding get() = _binding!!
+    private val preferences = mutableListOf<Preference>()
 
 
     override fun onCreateView(
@@ -35,13 +37,18 @@ class Create4 : Fragment() {
         val button = binding.buttonCont
         button.setOnClickListener {
             val act: MainActivity = activity as MainActivity
-            act.replaceFragments(R.id.create5Fragment, View.GONE);
+            act.replaceFragments(R.id.create5Fragment, View.VISIBLE);
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        viewModel = ViewModelProvider(activity as MainActivity)[CreateViewModel::class.java]
         // TODO: Use the ViewModel
+    }
+
+    fun onButtonPress() {
+        //Log.d("DATE", tripDate.toString())
+        viewModel.part4ToViewModel(preferences)
     }
 }

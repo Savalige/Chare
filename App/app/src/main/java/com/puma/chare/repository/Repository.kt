@@ -8,6 +8,7 @@ import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.time.Instant
 
 class Repository {
     suspend fun getProfile(id: String): Profile {
@@ -29,5 +30,9 @@ class Repository {
             .addFormDataPart("cardata", gson.toJson(car))
             .build()
         return RetrofitInstance.api.postCar(body)
+    }
+
+    suspend fun getTripsFromSearch(start: String, end: String, datetime: Instant, ): ArrayList<Trip> {
+        return RetrofitInstance.api.getTripsFromSearch(start, end, datetime.toString())
     }
 }

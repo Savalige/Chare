@@ -35,12 +35,10 @@ class trip_details : Fragment() {
         viewModel.getTrip(1 /*Change this to actual id*/)
         viewModel.trip.observe(viewLifecycleOwner) { trip ->
             run {
-                //Log.d("test", trip.Tr_Destinations)
-                Log.d("test3", trip.tr_Car!!.ca_Model + "rgnakrnan")
-
                 val destinations = trip.tr_Destinations.split(":")
                 val datetime = trip.tr_DateTime.split("T")
                 Log.d("test", datetime[0] +"asdasd")
+
 
                 setText(R.id.textView25, destinations[0])
                 setText(R.id.textView26, destinations[1])
