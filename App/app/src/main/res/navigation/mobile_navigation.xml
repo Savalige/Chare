@@ -7,9 +7,16 @@
 
     <fragment
         android:id="@+id/navigationSearch"
-        android:name="com.puma.chare.ui.search.search"
+        android:name="com.puma.chare.ui.search.Search"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchResults"
+        android:name="com.puma.chare.ui.search.SearchResults"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search_results" >
     </fragment>
 
     <fragment
