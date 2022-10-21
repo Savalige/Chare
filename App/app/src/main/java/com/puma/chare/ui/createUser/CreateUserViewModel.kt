@@ -18,7 +18,6 @@ class CreateUserViewModel : ViewModel() {
                                      email: String, password: String){
         profile.pr_Firstname = firstname
         profile.pr_Lastname = lastname
-        // TODO: Remove hardocded date.
         profile.pr_BirthDate = birthdate.toString()
         profile.pr_Email = email
         profile.pr_Password = password
