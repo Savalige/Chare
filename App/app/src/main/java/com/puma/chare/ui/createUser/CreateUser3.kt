@@ -48,7 +48,7 @@ class CreateUser3 : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
+        viewModel = ViewModelProvider(activity as CreateUserActivity).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
@@ -62,6 +62,7 @@ class CreateUser3 : Fragment() {
         else car.Ca_Fuel = "Bensin"
         // TODO: Remove hardcoded value
         car.Ca_FuelCon = 0.7
+        viewModel.passFragment3DataToViewModel(car)
     }
 
 }

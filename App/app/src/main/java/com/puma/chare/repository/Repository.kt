@@ -1,13 +1,27 @@
 package com.puma.chare.repository
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.puma.chare.api.RetrofitInstance
+import com.puma.chare.models.Car
 import com.puma.chare.models.Profile
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class Repository {
     suspend fun getProfile(id: String): Profile {
         return RetrofitInstance.api.getProfile(id)
     }
-    suspend fun postProfile(profile: Profile) {
+    suspend fun postProfile(profile: Profile): Profile {
         return RetrofitInstance.api.postProfile(profile)
+    }
+
+    suspend fun postCar(car: Car): Car {
+        val gson = Gson()
+        val body: RequestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("cardata", gson.toJson(car))
+            .build()
+        return RetrofitInstance.api.postCar(body)
     }
 }
