@@ -10,6 +10,9 @@
     <string name="search_journey">Sök Resa</string>
     <string name="where_would_you_like_to_go">Vart vill du åka?</string>
 
+    <string name="search_result">Resultat</string>
+    <string name="filter">Filtrera</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

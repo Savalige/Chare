@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.puma.chare.CreateTripActivity
+import com.puma.chare.MainActivity
+import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreate3Binding
 
 class Create3 : Fragment() {
@@ -32,8 +33,8 @@ class Create3 : Fragment() {
 
         val button = binding.buttonCont
         button.setOnClickListener {
-            val act: CreateTripActivity = activity as CreateTripActivity
-            act.replaceFragments(Create4());
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.create4Fragment, View.GONE);
         }
     }
 

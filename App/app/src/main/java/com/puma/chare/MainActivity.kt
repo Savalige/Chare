@@ -12,8 +12,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.puma.chare.databinding.ActivityMainBinding
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.navigation.NavController
 import com.puma.chare.ui.chat.chat
 import com.puma.chare.ui.profile.ProfileFragment
@@ -24,6 +26,7 @@ import com.puma.chare.ui.trips.trips
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
@@ -45,8 +48,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("Info", "HELLO");
 
             if (it.itemId == R.id.navigationCreate) {
-                val intent = Intent(this, CreateTripActivity::class.java)
-                startActivity(intent)
+                navController.navigate(R.id.navigationCreate)
             }
             if (it.itemId == R.id.navigationSearch) {
                 navController.navigate(R.id.navigationSearch)
@@ -66,10 +68,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun replaceFragments(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.nav_host_fragment_activity_main, fragment)
-            commit()
-        }
+    public fun replaceFragments(id: Int, visibility: Int) {
+        navController.navigate(id)
+        val navView: BottomNavigationView = binding.navView
+        navView.visibility = visibility
     }
 }
