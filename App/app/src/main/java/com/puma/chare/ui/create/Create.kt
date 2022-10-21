@@ -12,8 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.puma.chare.MainActivity
 import com.puma.chare.R
-
 import com.puma.chare.databinding.FragmentCreateBinding
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.temporal.TemporalAccessor
 import java.util.*
 
 class Create : Fragment() {
@@ -25,6 +29,7 @@ class Create : Fragment() {
     private lateinit var viewModel: CreateViewModel
     private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
+    private val format: String = "dd.MM.yyyy"
 
 
     override fun onCreateView(
@@ -45,22 +50,7 @@ class Create : Fragment() {
 
         val button = binding.button
         button.setOnClickListener {
-            Log.d("Info", "HERE");
-            Log.d("Info", binding.inputDate.editText?.text.toString());
-
-            // Get textviews by id from the inflated view.
-            // Changes in UI must be done after view is inflated.
-            val origin = binding.inputOrigin.text.toString()
-            val destination = binding.inputDestination.text.toString()
-            val date = binding.inputDateField.text.toString()
-            val time = binding.inputTimeField.text.toString()
-
-            Log.d("Info", origin);
-            Log.d("Info", destination);
-
-            // TODO: Pass date from input to part1ToViewModel instead of current date.
-            viewModel.part1ToViewModel(origin, destination, Date())
-            
+            onButtonPress()
             val act: MainActivity = activity as MainActivity
             act.replaceFragments(R.id.create3Fragment, View.GONE);
         }
@@ -122,7 +112,37 @@ class Create : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        viewModel = ViewModelProvider(activity as MainActivity)[CreateViewModel::class.java]
         // TODO: Use the ViewModel
+    }
+
+    fun onButtonPress() {
+        // Get time string from input field
+        val dateString = binding.inputDateField.text.toString()
+        Log.d("DATE", dateString)
+        val timeString = binding.inputTimeField.text.toString()
+        Log.d("DATE", timeString)
+        val dateTimeString = "$dateString;$timeString"
+        Log.d("DATE", dateTimeString)
+
+        val FMT: DateTimeFormatter = DateTimeFormatterBuilder()
+            .appendPattern("dd.MM.yyyy;HH:mm")
+            .toFormatter()
+            .withZone(ZoneId.of("Europe/Stockholm"))
+
+        val inst = FMT.parse(
+            dateTimeString
+        ) { temporal: TemporalAccessor? ->
+            Instant.from(
+                temporal
+            )
+        }
+        Log.d("DATE", inst.toString())
+
+        //Log.d("DATE", tripDate.toString())
+        viewModel.part1ToViewModel(
+            binding.inputOrigin.text.toString(),
+            binding.inputDestination.text.toString(),
+            inst)
     }
 }

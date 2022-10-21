@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
-import com.puma.chare.R
-import com.puma.chare.databinding.FragmentCreateBinding
 import com.puma.chare.databinding.FragmentSearchBinding
 import com.puma.chare.ui.create.Create3
 import com.puma.chare.ui.create.CreateViewModel
