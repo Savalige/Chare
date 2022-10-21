@@ -2,6 +2,7 @@ package com.puma.chare.ui.create
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,11 @@ import android.view.ViewGroup
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreate3Binding
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.temporal.TemporalAccessor
 
 class Create3 : Fragment() {
 
@@ -33,6 +39,7 @@ class Create3 : Fragment() {
 
         val button = binding.buttonCont
         button.setOnClickListener {
+            onButtonPress()
             val act: MainActivity = activity as MainActivity
             act.replaceFragments(R.id.create4Fragment, View.GONE);
         }
@@ -40,7 +47,12 @@ class Create3 : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        viewModel = ViewModelProvider(activity as MainActivity)[CreateViewModel::class.java]
         // TODO: Use the ViewModel
+    }
+
+    fun onButtonPress() {
+        //Log.d("DATE", tripDate.toString())
+        viewModel.part2ToViewModel(binding.editTextNumber.text.toString().toInt())
     }
 }
