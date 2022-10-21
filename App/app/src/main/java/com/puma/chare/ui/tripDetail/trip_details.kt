@@ -13,12 +13,13 @@ import com.puma.chare.R
 import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
 import com.puma.chare.ui.profile.ProfileViewModel
+import kotlin.math.roundToInt
 
 class trip_details : Fragment() {
 
-    companion object {
+   /* companion object {
         fun newInstance() = trip_details()
-    }
+    }*/
 
     private lateinit var viewModel: TripDetailsViewModel
     private lateinit var inflatedView: View
@@ -31,20 +32,23 @@ class trip_details : Fragment() {
         this.inflatedView = inflater.inflate(R.layout.fragment_trip_details, container, false)
 
         viewModel = ViewModelProvider(this)[TripDetailsViewModel::class.java]
-        viewModel.getTrip()
+        viewModel.getTrip(1 /*Change this to actual id*/)
         viewModel.trip.observe(viewLifecycleOwner) { trip ->
             run {
-                //Log.d("test", profile.pr_Firstname)
-                val destinations = trip.Tr_Destinations.split(":")
-                val datetime = trip.Tr_Date.toString().split(" ")
+                //Log.d("test", trip.Tr_Destinations)
+                Log.d("test3", trip.tr_Car!!.ca_Model + "rgnakrnan")
+
+                val destinations = trip.tr_Destinations.split(":")
+                val datetime = trip.tr_DateTime.split("T")
+                Log.d("test", datetime[0] +"asdasd")
 
                 setText(R.id.textView25, destinations[0])
                 setText(R.id.textView26, destinations[1])
                 setText(R.id.textView19, datetime[0])
                 setText(R.id.textView20, datetime[1])
-                setText(R.id.textView28, trip.Tr_Price.toString())
-                setText(R.id.textView21, "Volvo V90")
-                setText(R.id.textView22, trip.Tr_AvaliableSeats.toString())
+                setText(R.id.textView28, trip.tr_Price.roundToInt().toString())
+                setText(R.id.textView21, trip.tr_Car!!.ca_Model)
+                setText(R.id.textView22, trip.tr_AvaliableSeats.toString())
             }
         }
         return inflatedView

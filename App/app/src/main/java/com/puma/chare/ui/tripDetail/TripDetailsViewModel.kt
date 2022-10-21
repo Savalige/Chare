@@ -17,11 +17,11 @@ class TripDetailsViewModel : ViewModel() {
 
     val trip: MutableLiveData<Trip> = MutableLiveData()
 
-    fun getTrip(): Job {
+    fun getTrip(id: Int): Job {
         val repository = Repository()
 
         return viewModelScope.launch {
-            val response = repository.getTrip("1")
+            val response = repository.getTrip(id.toString())
             trip.value = response
         }
     }

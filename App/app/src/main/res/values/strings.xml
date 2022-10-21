@@ -93,4 +93,7 @@
     <string name="driver_pref">Angett av föraren</string>
     <string name="apply">Ansök</string>
     <string name="contact_driver">Kontakta föraren privat</string>
+    <string name="driver">Förare</string>
+    <string name="passenger">Passagerare</string>
+    <string name="pets_allowed">Husdjur tillåtna</string>
 </resources>

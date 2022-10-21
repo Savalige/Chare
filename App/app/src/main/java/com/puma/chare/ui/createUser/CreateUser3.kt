@@ -54,14 +54,14 @@ class CreateUser3 : Fragment() {
 
     fun submitToViewModel() {
         val car = Car()
-        car.Ca_Model = binding.editCarModel.text.toString()
-        car.Ca_Color = "Svart"
-        car.Ca_Seats = binding.editSeatsAvaliable.text.toString().toInt()
-        car.Ca_Fuel = binding.fuelSwitch.isActivated.toString()
-        if(binding.fuelSwitch.isActivated) car.Ca_Fuel = "Diesel"
-        else car.Ca_Fuel = "Bensin"
+        car.ca_Model = binding.editCarModel.text.toString()
+        car.ca_Color = "Svart"
+        car.ca_Seats = binding.editSeatsAvaliable.text.toString().toInt()
+        car.ca_Fuel = binding.fuelSwitch.isActivated.toString()
+        if(binding.fuelSwitch.isActivated) car.ca_Fuel = "Diesel"
+        else car.ca_Fuel = "Bensin"
         // TODO: Remove hardcoded value
-        car.Ca_FuelCon = 0.7
+        car.ca_FuelCon = 0.7
         viewModel.passFragment3DataToViewModel(car)
     }
 
