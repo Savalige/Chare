@@ -11,6 +11,9 @@ import com.puma.chare.CreateUserActivity
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateUser4Binding
+import java.time.Instant
+import java.time.LocalDate
+import java.util.*
 
 class CreateUser4 : Fragment() {
 
@@ -27,14 +30,23 @@ class CreateUser4 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreateUser4Binding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(activity as CreateUserActivity)[CreateUserViewModel::class.java]
         return binding.root
     }
+
+    /*override fun onResume() {
+        super.onResume()
+        setFields()
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = binding.buttonUserCreateContinue3
+        setFields()
+
+        val button = binding.submitNewProfileButton
         button.setOnClickListener {
+            viewModel.submitProfile()
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
         }
@@ -48,8 +60,18 @@ class CreateUser4 : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateUserViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
+    fun setFields(){
+        val profile = viewModel.getProfile()
+        val car = viewModel.getCar()
+        binding.nameText.text = profile.pr_Firstname + " " + profile.pr_Lastname
+        val age = Date.from(Instant.now()).year - Date.from(Instant.parse(profile.pr_BirthDate)).year
+        binding.ageText.text = "$age år"
+        binding.bioText.text = profile.pr_Bio
+        binding.carModelText.text = car.Ca_Model
+        binding.fuelEcoText.text = car.Ca_FuelCon.toString() + " liter / mil"
+        binding.numSeatsText.text = car.Ca_Seats.toString() + " lediga säten"
+    }
 }

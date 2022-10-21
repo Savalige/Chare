@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textCreateUser" />
 
     <EditText
-        android:id="@+id/editUserFirstName"
+        android:id="@+id/editCarModel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -66,9 +66,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/editUserFirstName"
-        app:layout_constraintStart_toStartOf="@+id/editUserFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/editUserFirstName">
+        app:layout_constraintEnd_toEndOf="@+id/editCarModel"
+        app:layout_constraintStart_toStartOf="@+id/editCarModel"
+        app:layout_constraintTop_toBottomOf="@+id/editCarModel">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -212,9 +212,9 @@
         android:text="0.7 Liter / Milen"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
         android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintBottom_toBottomOf="@+id/fuelSwitch"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toTopOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="@+id/fuelSwitch" />
 
     <TextView
         android:id="@+id/textViewFuel2"
@@ -224,12 +224,12 @@
         android:text="Disel"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
         android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+        app:layout_constraintBottom_toBottomOf="@+id/fuelSwitch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="@+id/fuelSwitch" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/fuelSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -240,7 +240,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editSeatsAvaliable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -250,17 +250,17 @@
         android:text="Antal lediga säten"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/fuelSwitch" />
 
     <Button
-        android:id="@+id/buttonUserCreateContinue3"
+        android:id="@+id/fragment3NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Fortsätt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editSeatsAvaliable" />
 
     <TextView
         android:id="@+id/textViewSkip"
@@ -270,9 +270,9 @@
         android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
         android:textColor="@color/DarkestPurple"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonUserCreateContinue3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/buttonUserCreateContinue3" />
+        app:layout_constraintBottom_toBottomOf="@+id/fragment3NextButton"
+        app:layout_constraintStart_toStartOf="@+id/editSeatsAvaliable"
+        app:layout_constraintTop_toTopOf="@+id/fragment3NextButton" />
 
     <ImageView
         android:id="@+id/imageViewBottom"

@@ -38,8 +38,8 @@ class Create5 : Fragment() {
 
         val button = binding.buttonCont
         button.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.navigationSearch, View.VISIBLE);
         }
     }
 
