@@ -18,10 +18,10 @@ class SearchResultsViewModel : ViewModel() {
     private lateinit var trips : List<Trip>
 
     fun getAllTrips() : List<Trip>{
-        val format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        val localdate = LocalDate.parse("2022-10-11 18:46:39",format)
+        val format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val localdate = LocalDate.parse("2022-10-11T18:46:39.245Z",format)
         val date = Date.from(localdate.atStartOfDay(ZoneId.systemDefault()).toInstant())
-        var driver = Profile(1,"Test","Testsson", date,"2",23,24,25,6,"test@mail.com","123","Hej", null)
+        var driver = Profile(1,"Test","Testsson", "2022-10-11T18:46:39.245Z","2",23,24,25,6,"test@mail.com","123","Hej", null)
         var trip1 =  Trip(1, date,4,0.8, "AÖLKJSNfciöabd",driver,null,null,null, null)
         var trip2 =  Trip(2, date,4,0.8, "Stockholm",driver,null,null,null, null)
         var trip3 =  Trip(2, date,4,0.8, "Stockholm",driver,null,null,null, null)

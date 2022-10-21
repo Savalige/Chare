@@ -1,21 +1,28 @@
 package com.puma.chare.ui.tripDetail
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.gson.GsonBuilder
 import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
+import com.puma.chare.repository.Repository
 import com.puma.chare.ui.Network
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class TripDetailsViewModel : ViewModel() {
     // TODO: Implement the ViewModel
-    public fun fetchData(): Trip {
-        val jsonString = runBlocking {
-            // TODO: Remove hardcoded profile, supply credentials.
-            return@runBlocking Network.getAsync("http://10.0.2.2:5256/api/Trip/1").await()
-        }
-        val gson = GsonBuilder().setDateFormat("yyyy-mm-dd HH:mm:ss").create()
 
-        return gson.fromJson(jsonString, Trip::class.java)
+    val trip: MutableLiveData<Trip> = MutableLiveData()
+
+    fun getTrip(): Job {
+        val repository = Repository()
+
+        return viewModelScope.launch {
+            val response = repository.getTrip("1")
+            trip.value = response
+        }
     }
 }

@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
-import com.puma.chare.CreateTripActivity
+
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 
