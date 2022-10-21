@@ -102,12 +102,12 @@ namespace API.Controllers
 
             CarModel carModel = new CarModel();
 
-            carModel.Ca_Model = m.ca_Model;
-            carModel.Ca_Owner = await _context.Profiles.FindAsync(Convert.ToInt32(m.ca_Owner.pr_Id));
-            carModel.Ca_Seats = m.ca_Seats;
-            carModel.Ca_Color = m.ca_Color;
-            carModel.Ca_Fuel = m.ca_Fuel;
-            carModel.Ca_FuelCon = m.ca_FuelCon;
+            carModel.Ca_Model = m.Ca_Model;
+            carModel.Ca_Owner = await _context.Profiles.FindAsync(Convert.ToInt32(m.Ca_Owner.pr_Id));
+            carModel.Ca_Seats = m.Ca_Seats;
+            carModel.Ca_Color = m.Ca_Color;
+            carModel.Ca_Fuel = m.Ca_Fuel;
+            carModel.Ca_FuelCon = m.Ca_FuelCon;
             _context.Cars.Add(carModel);
             await _context.SaveChangesAsync();
 
