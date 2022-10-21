@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TimePicker
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreateBinding
@@ -52,7 +53,7 @@ class Create : Fragment() {
         button.setOnClickListener {
             onButtonPress()
             val act: MainActivity = activity as MainActivity
-            act.replaceFragments(R.id.create3Fragment, View.GONE);
+            act.replaceFragments(R.id.create3Fragment, View.VISIBLE);
         }
     }
 

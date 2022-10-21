@@ -7,7 +7,7 @@ namespace API.Models
     {
         [Key]
         public int Tr_Id { get; set; }
-        [Column(TypeName = "Date")]
+        [Column(TypeName = "DateTime")]
         public DateTime Tr_DateTime { get; set; }
         public int Tr_AvaliableSeats { get; set; }
         public int Tr_Price { get; set; }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.search"
+    tools:context=".ui.search.Search"
     android:orientation="vertical"
     android:gravity="top"
     android:background="@color/White">
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/origin_input"
+                android:id="@+id/destination_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Till" />
@@ -61,7 +61,7 @@
             app:layout_constraintTop_toBottomOf="@+id/origin">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/destination_input"
+                android:id="@+id/origin_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Från" />
