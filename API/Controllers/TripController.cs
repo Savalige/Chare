@@ -31,7 +31,7 @@ namespace API.Controllers
         // GET: api/Trip/Search
         //TODO: Fix filtering after price (min and max, depending on gas-prices and also distance)
         [HttpGet("Search/{start, end, time, preferences?}")]
-        public async Task<ActionResult<IEnumerable<TripModel>>> GetTripsSearch([FromQuery] string start, string end, DateTime time, string preferences)
+        public async Task<ActionResult<IEnumerable<TripModel>>> GetTripsSearch([FromQuery] string start, string end, DateTime time, string? preferences)
         { 
             if (preferences is not null)
             {
@@ -53,10 +53,9 @@ namespace API.Controllers
             {
                 return await _context.Trips
                 .Where(t =>
-                    t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start) > -1
-                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end) > -1
-                    && t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(start)
-                    < t.Tr_Destinations.Split(':', System.StringSplitOptions.None).ToList().IndexOf(end)
+                    t.Tr_Destinations.Contains(start) &&
+                    t.Tr_Destinations.Contains(end) &&
+                    t.Tr_Destinations.IndexOf(start) < t.Tr_Destinations.IndexOf(end)
                     )
                 .Where(t => t.Tr_DateTime > time)
                 .OrderBy(t => t.Tr_DateTime)

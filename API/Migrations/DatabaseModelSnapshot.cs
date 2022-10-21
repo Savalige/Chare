@@ -274,7 +274,7 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Tr_DateTime")
-                        .HasColumnType("Date");
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Tr_Destinations")
                         .IsRequired()
