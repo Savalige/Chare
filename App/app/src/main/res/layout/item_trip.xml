@@ -167,19 +167,5 @@
         app:layout_constraintStart_toEndOf="@id/tripicon5"
         app:srcCompat="@drawable/pet_icon"/>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="Just nu får du"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
-        android:textColor="@color/Black"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/tripCost"
-        app:layout_constraintStart_toStartOf="@+id/tripCost"
-        app:layout_constraintTop_toTopOf="@+id/tripCost" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@ class trip_details : Fragment() {
             run {
                 //Log.d("test", profile.pr_Firstname)
                 val destinations = trip.Tr_Destinations.split(":")
-                val datetime = trip.Tr_Date.toString().split(" ")
+                val datetime = trip.Tr_DateTime.toString().split(" ")
 
                 setText(R.id.textView25, destinations[0])
                 setText(R.id.textView26, destinations[1])
