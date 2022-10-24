@@ -58,8 +58,7 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
-        if (MyApplication().profileID == -1) {
-            MyApplication().profileID = -2
+        if (MyApplication.profileID == -1) {
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)
         }
@@ -79,5 +78,8 @@ class MainActivity : AppCompatActivity() {
 }
 
 class MyApplication : Application() {
-    var profileID: Int = -1
+    companion object {
+        @JvmField
+        var profileID: Int = -1
+    }
 }

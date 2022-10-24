@@ -21,7 +21,7 @@ class ProfileViewModel() : ViewModel() {
         val repository = Repository()
 
         return viewModelScope.launch {
-            val response = repository.getProfile(MyApplication().profileID.toString())
+            val response = repository.getProfile(MyApplication.profileID.toString())
             profile.value = response
         }
     }

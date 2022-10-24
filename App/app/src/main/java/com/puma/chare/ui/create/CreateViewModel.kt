@@ -60,7 +60,7 @@ class CreateViewModel : ViewModel() {
 
     fun submitForm() {
         val profile = Profile()
-        profile.pr_Id = MyApplication().profileID
+        profile.pr_Id = MyApplication.profileID
         trip.tr_Driver = profile
 
         val repo = Repository()

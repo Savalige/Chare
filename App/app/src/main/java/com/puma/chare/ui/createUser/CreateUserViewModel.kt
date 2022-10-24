@@ -41,7 +41,7 @@ class CreateUserViewModel : ViewModel() {
         val repo = Repository()
         viewModelScope.launch {
             val fetchedProfile: Profile = repo.postProfile(profile)
-            MyApplication().profileID = fetchedProfile.pr_Id!!
+            MyApplication.profileID = fetchedProfile.pr_Id!!
             car.ca_Owner = fetchedProfile
             val car: Car = repo.postCar(car)
         }
