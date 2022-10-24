@@ -42,7 +42,6 @@ class CreateUserViewModel : ViewModel() {
             val fetchedProfile: Profile = repo.postProfile(profile)
             car.ca_Owner = fetchedProfile
             val car: Car = repo.postCar(car)
-            // will go bad.
         }
     }
 }

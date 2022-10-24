@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.databinding.FragmentCreate3Binding
@@ -31,6 +32,17 @@ class Create3 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreate3Binding.inflate(inflater, container, false)
+
+        viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        viewModel.getCar()
+        viewModel.car.observe(viewLifecycleOwner) { car ->
+            run {
+               // Log.d("test", profile.pr_Firstname)
+                binding.textView10.text = car.ca_Model.toString()
+                binding.textView11.text = car.ca_FuelCon.toString() + " liter " + car.ca_Fuel
+                binding.editTextNumber.setText(car.ca_Seats.toString())
+            }
+        }
         return binding.root
     }
 
@@ -53,6 +65,7 @@ class Create3 : Fragment() {
 
     fun onButtonPress() {
         //Log.d("DATE", tripDate.toString())
-        viewModel.part2ToViewModel(binding.editTextNumber.text.toString().toInt())
+        val price = binding.textView15.text.toString().split(" ")[0]
+        viewModel.part2ToViewModel(binding.editTextNumber.text.toString().toInt(),price.toDouble())
     }
 }

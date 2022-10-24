@@ -1,12 +1,18 @@
 package com.puma.chare.ui.create
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.puma.chare.models.Car
 import com.puma.chare.models.Preference
+import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
+import com.puma.chare.repository.Repository
 import com.puma.chare.ui.Network
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.Instant
 
@@ -14,35 +20,56 @@ class CreateViewModel : ViewModel() {
 
     private val trip: Trip = Trip()
 
+    val car: MutableLiveData<Car> = MutableLiveData()
+    var carId: Int = 1
+
     public fun getTrip(): Trip {
         return trip
     }
 
     public fun part1ToViewModel(origin: String, destination: String, dateTime: Instant) {
-        trip.Tr_Destinations = "[$origin:$destination]"
-        trip.Tr_Date = dateTime.toString()
+        trip.tr_Destinations = "$origin:$destination"
+        trip.tr_DateTime = dateTime.toString().split("Z")[0]
     }
 
-    public fun part2ToViewModel(avaliableSeats: Int) {
-        trip.Tr_AvaliableSeats = avaliableSeats
-    }
+    public fun part2ToViewModel(avaliableSeats: Int, price: Double) {
+        val car = Car()
+        car.ca_Id = carId
 
-    public fun part3ToViewModel() {
-
+        trip.tr_AvaliableSeats = avaliableSeats
+        trip.tr_Car = car
+        trip.tr_Price = price
     }
 
     public fun part4ToViewModel(preferences: MutableList<Preference>) {
-        trip.Tr_TripPreferences = preferences
+        trip.tr_TripPreferences = preferences
     }
 
-    // Is called in Create5
-    public fun submitForm() {
-        /*
-        val result = runBlocking {
-            return@runBlocking Network.postAsync("url", Gson().toJson(formData)).await()
+    fun getCar(): Job {
+        val repository = Repository()
+
+        return viewModelScope.launch {
+            val response = repository.getCarFromProfile("1")
+            car.value = response[0]
+            carId = response[0].ca_Id!!
+
         }
-        Log.d("test", result)
-        */
-        // Navigate to different page depending on result.
     }
+
+
+    fun submitForm() {
+        val profile = Profile()
+        profile.pr_Id = 1
+        trip.tr_Driver = profile
+
+        val repo = Repository()
+        viewModelScope.launch {
+            val response = repo.postTrip(trip)
+           // if(response.)
+            // will go bad.
+        }
+
+    }
+
+
 }
