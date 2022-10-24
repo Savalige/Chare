@@ -1,9 +1,13 @@
 package com.puma.chare.ui.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
+import androidx.core.view.iterator
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,12 +17,15 @@ import com.puma.chare.R
 import com.puma.chare.databinding.FragmentSearchBinding
 import com.puma.chare.databinding.FragmentSearchResultsBinding
 import com.puma.chare.ui.create.CreateViewModel
+import com.puma.chare.ui.tripDetail.TripDetailsViewModel
+import java.util.logging.Logger
 
 
 class SearchResults : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var resultRecyclerView: RecyclerView
+
 
     //private lateinit var resultAdapter : SearchAdapter
     private lateinit var views: View
@@ -41,11 +48,9 @@ class SearchResults : Fragment() {
                 resultRecyclerView = binding.rvSearchResults
                 resultRecyclerView.layoutManager = LinearLayoutManager(activity)
                 resultRecyclerView.setHasFixedSize(true)
-
-                resultRecyclerView.adapter = SearchAdapter(trips)
+                resultRecyclerView.adapter = SearchAdapter(trips, activity as MainActivity)
             }
         }
-
         return binding.root
     }
 }

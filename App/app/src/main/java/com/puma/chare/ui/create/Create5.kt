@@ -51,6 +51,12 @@ class Create5 : Fragment() {
             viewModel.submitForm()
             act.replaceFragments(R.id.navigationSearch, View.VISIBLE);
         }
+
+        val back = binding.textBack
+        back.setOnClickListener {
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.navigationCreate, View.GONE);
+        }
     }
 
 

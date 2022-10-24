@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.models.Trip
+import com.puma.chare.ui.tripDetail.TripDetailsViewModel
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZoneOffset
@@ -20,7 +23,7 @@ import java.time.temporal.ChronoField
 import java.time.temporal.TemporalAccessor
 import java.util.*
 
-class SearchAdapter (private val searchResult: List<Trip>) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(){
+class SearchAdapter (private val searchResult: List<Trip>, private val activity: MainActivity) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -58,6 +61,11 @@ class SearchAdapter (private val searchResult: List<Trip>) : RecyclerView.Adapte
         holder.date.text = date.date.toString() + " " + months[date.month]
         holder.time.text = instant.atZone(ZoneOffset.ofHours(2)).hour.toString() + ":" + instant.atZone(ZoneOffset.UTC).minute
         holder.cost.text = currentItem.tr_Price.toInt().toString() + "kr"
+        holder.itemView.setOnClickListener {
+            ViewModelProvider(activity)[TripDetailsViewModel::class.java].getTrip(currentItem.tr_Id!!)
+            val act: MainActivity = activity
+            act.replaceFragments(R.id.navigationTripDetail, View.VISIBLE);
+        }
     }
 
     override fun getItemCount(): Int {
