@@ -87,13 +87,17 @@ class Create5 : Fragment() {
             }
         }
 
+        var minutes = instant.atZone(ZoneOffset.UTC).minute.toString()
+        if(minutes.toInt() < 10){
+            minutes = "0$minutes"
+        }
         binding.dispFrom.text = destinations[0]
         binding.dispTo.text = destinations.last()
         binding.textView4.text = ""
         binding.textView18.text = ""
         binding.textView19.text = dateTime.date.toString() + " " + months[dateTime.month]
         binding.textView20.text = instant.atZone(ZoneOffset.ofHours(4)).hour.toString() +
-                ":" + instant.atZone(ZoneOffset.UTC).minute
+                ":" + minutes
         binding.textView22.text = trip.tr_AvaliableSeats.toString()
         binding.textView21.text = trip.tr_Car?.ca_Model
         binding.textView24.text = "Inga valda preferenser"

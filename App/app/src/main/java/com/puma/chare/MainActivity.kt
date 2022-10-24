@@ -52,8 +52,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigationTripDetail)
             }
             if (it.itemId == R.id.navigationProfile) {
-                val intent = Intent(this, CreateUserActivity::class.java)
-                startActivity(intent)
+                navController.navigate(R.id.navigationProfile)
             }
 
             true

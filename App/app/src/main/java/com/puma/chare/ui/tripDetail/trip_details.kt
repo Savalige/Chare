@@ -14,6 +14,13 @@ import com.puma.chare.R
 import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
 import com.puma.chare.ui.profile.ProfileViewModel
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.temporal.TemporalAccessor
+import java.util.*
 import kotlin.math.roundToInt
 
 class trip_details : Fragment() {
@@ -24,6 +31,9 @@ class trip_details : Fragment() {
 
     private lateinit var viewModel: TripDetailsViewModel
     private lateinit var inflatedView: View
+
+    val months = arrayOf("Januari","Februari","Mars","April","Maj","Juni","Juli","Augusti",
+        "September","Oktober","November,","December")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,14 +83,32 @@ class trip_details : Fragment() {
         viewModel.trip.observe(viewLifecycleOwner) { trip ->
             run {
                 val destinations = trip.tr_Destinations.split(":")
-                val datetime = trip.tr_DateTime.split("T")
-                Log.d("test", datetime[0] +"asdasd")
 
+                val FMT: DateTimeFormatter = DateTimeFormatterBuilder()
+                    .appendPattern("yyyy-MM-dd'T'HH:mm:ss")
+                    .toFormatter()
+                    .withZone(ZoneId.of("Europe/Stockholm"))
+
+                // Convert time string to Instant.
+                val instant = FMT.parse(
+                    trip.tr_DateTime
+                ) { temporal: TemporalAccessor? ->
+                    Instant.from(
+                        temporal
+                    )
+                }
+
+                val date = Date.from(instant)
+
+                var minutes = instant.atZone(ZoneOffset.UTC).minute.toString()
+                if(minutes.toInt() < 10){
+                    minutes = "0$minutes"
+                }
 
                 setText(R.id.textView25, destinations[0])
                 setText(R.id.textView26, destinations[1])
-                setText(R.id.textView19, datetime[0])
-                setText(R.id.textView20, datetime[1])
+                setText(R.id.textView19, date.date.toString() + " " + months[date.month])
+                setText(R.id.textView20, instant.atZone(ZoneOffset.ofHours(2)).hour.toString() + ":" + minutes)
                 setText(R.id.textView28, (trip.tr_Price.roundToInt()*13).toString())
                 setText(R.id.textView21, trip.tr_Car!!.ca_Model)
                 setText(R.id.textView22, trip.tr_AvaliableSeats.toString())
