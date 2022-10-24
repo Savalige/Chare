@@ -247,7 +247,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="96dp"
-        android:text="Antal lediga säten"
+        android:hint="Antal lediga säten"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
         app:layout_constraintTop_toBottomOf="@+id/fuelSwitch" />
