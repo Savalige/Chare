@@ -50,7 +50,7 @@ class CreateViewModel : ViewModel() {
         val repository = Repository()
 
         return viewModelScope.launch {
-            val response = repository.getCarFromProfile("1")
+            val response = repository.getCarFromProfile(MyApplication.profileID.toString())
             car.value = response[0]
             carId = response[0].ca_Id!!
 

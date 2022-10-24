@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navView.setOnItemSelectedListener {
-            Log.d("Info", "HELLO");
 
             if (it.itemId == R.id.navigationCreate) {
                 navController.navigate(R.id.navigationCreate)
