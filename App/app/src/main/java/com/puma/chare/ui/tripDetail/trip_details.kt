@@ -31,6 +31,10 @@ class trip_details : Fragment() {
     ): View? {
 
         this.inflatedView = inflater.inflate(R.layout.fragment_trip_details, container, false)
+        inflatedView.findViewById<TextView>(R.id.textBack).setOnClickListener {
+            val act: MainActivity = activity as MainActivity
+            act.backFragments()
+        }
         return inflatedView
         /*viewModel = ViewModelProvider(this)[TripDetailsViewModel::class.java]
 

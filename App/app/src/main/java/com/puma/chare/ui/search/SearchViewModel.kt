@@ -15,6 +15,9 @@ import java.time.Instant
 class SearchViewModel : ViewModel() {
 
     val trips: MutableLiveData<List<Trip>> = MutableLiveData()
+    private lateinit var origin: String
+    private lateinit var destination: String
+    private lateinit var datetime: Instant
 
     public fun handleSubmit(origin: String, destination: String, datetime: Instant) {
         val repo = Repository()

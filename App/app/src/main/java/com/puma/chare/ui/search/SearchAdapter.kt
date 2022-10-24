@@ -69,7 +69,7 @@ class SearchAdapter (private val searchResult: List<Trip>, private val activity:
         holder.itemView.setOnClickListener {
             ViewModelProvider(activity)[TripDetailsViewModel::class.java].getTrip(currentItem.tr_Id!!)
             val act: MainActivity = activity
-            act.replaceFragments(R.id.navigationTripDetail, View.VISIBLE);
+            act.replaceFragments(R.id.navigationTripDetail, View.GONE);
         }
     }
 
