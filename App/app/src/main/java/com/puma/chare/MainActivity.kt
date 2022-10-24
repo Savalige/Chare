@@ -58,6 +58,11 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+        if (MyApplication().profileID == -1) {
+            MyApplication().profileID = -2
+            val intent = Intent(this, CreateUserActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     public fun replaceFragments(id: Int, visibility : Int = View.VISIBLE) {
@@ -74,5 +79,5 @@ class MainActivity : AppCompatActivity() {
 }
 
 class MyApplication : Application() {
-    var profileID: Int = 1
+    var profileID: Int = -1
 }

@@ -79,7 +79,7 @@ class SearchAdapter (private val searchResult: List<Trip>, private val activity:
         val time : TextView = itemView.findViewById(R.id.tripTime)
         val availableSeats : TextView = itemView.findViewById(R.id.tripSeatsAvailable)
         val cost : TextView = itemView.findViewById(R.id.tripCost)
-        val preferenceList : ImageView = itemView.findViewById(R.id.tripicon1)
+        //val preferenceList : ImageView = itemView.findViewById(R.id.)
     }
 
 }
