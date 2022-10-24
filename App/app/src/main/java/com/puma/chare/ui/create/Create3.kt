@@ -41,7 +41,13 @@ class Create3 : Fragment() {
         button.setOnClickListener {
             onButtonPress()
             val act: MainActivity = activity as MainActivity
-            act.replaceFragments(R.id.create4Fragment, View.VISIBLE);
+            act.replaceFragments(R.id.create4Fragment, View.GONE);
+        }
+
+        val back = binding.textBack
+        back.setOnClickListener {
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.navigationCreate, View.VISIBLE);
         }
     }
 

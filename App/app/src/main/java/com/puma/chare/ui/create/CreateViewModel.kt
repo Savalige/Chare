@@ -19,12 +19,12 @@ class CreateViewModel : ViewModel() {
     }
 
     public fun part1ToViewModel(origin: String, destination: String, dateTime: Instant) {
-        trip.Tr_Destinations = "[$origin:$destination]"
-        trip.Tr_Date = dateTime.toString()
+        trip.tr_Destinations = "$origin:$destination"
+        trip.tr_DateTime = dateTime.toString()
     }
 
     public fun part2ToViewModel(avaliableSeats: Int) {
-        trip.Tr_AvaliableSeats = avaliableSeats
+        trip.tr_AvaliableSeats = avaliableSeats
     }
 
     public fun part3ToViewModel() {
@@ -32,7 +32,7 @@ class CreateViewModel : ViewModel() {
     }
 
     public fun part4ToViewModel(preferences: MutableList<Preference>) {
-        trip.Tr_TripPreferences = preferences
+        trip.tr_TripPreferences = preferences
     }
 
     // Is called in Create5

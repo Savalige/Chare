@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
+import com.puma.chare.MainActivity
 import com.puma.chare.R
 import com.puma.chare.models.Profile
 import com.puma.chare.models.Trip
@@ -30,25 +31,6 @@ class trip_details : Fragment() {
     ): View? {
 
         this.inflatedView = inflater.inflate(R.layout.fragment_trip_details, container, false)
-
-        viewModel = ViewModelProvider(this)[TripDetailsViewModel::class.java]
-        viewModel.getTrip(1 /*Change this to actual id*/)
-        viewModel.trip.observe(viewLifecycleOwner) { trip ->
-            run {
-                val destinations = trip.tr_Destinations.split(":")
-                val datetime = trip.tr_DateTime.split("T")
-                Log.d("test", datetime[0] +"asdasd")
-
-
-                setText(R.id.textView25, destinations[0])
-                setText(R.id.textView26, destinations[1])
-                setText(R.id.textView19, datetime[0])
-                setText(R.id.textView20, datetime[1])
-                setText(R.id.textView28, trip.tr_Price.roundToInt().toString())
-                setText(R.id.textView21, trip.tr_Car!!.ca_Model)
-                setText(R.id.textView22, trip.tr_AvaliableSeats.toString())
-            }
-        }
         return inflatedView
         /*viewModel = ViewModelProvider(this)[TripDetailsViewModel::class.java]
 
@@ -78,6 +60,28 @@ class trip_details : Fragment() {
         seats?.text = trip.Tr_AvaliableSeats.toString()
 
         return inflatedView*/
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel = ViewModelProvider(activity as MainActivity)[TripDetailsViewModel::class.java]
+        //viewModel.getTrip(1 /*Change this to actual id*/)
+        viewModel.trip.observe(viewLifecycleOwner) { trip ->
+            run {
+                val destinations = trip.tr_Destinations.split(":")
+                val datetime = trip.tr_DateTime.split("T")
+                Log.d("test", datetime[0] +"asdasd")
+
+
+                setText(R.id.textView25, destinations[0])
+                setText(R.id.textView26, destinations[1])
+                setText(R.id.textView19, datetime[0])
+                setText(R.id.textView20, datetime[1])
+                setText(R.id.textView28, trip.tr_Price.roundToInt().toString())
+                setText(R.id.textView21, trip.tr_Car!!.ca_Model)
+                setText(R.id.textView22, trip.tr_AvaliableSeats.toString())
+            }
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

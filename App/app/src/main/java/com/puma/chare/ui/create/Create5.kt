@@ -36,6 +36,12 @@ class Create5 : Fragment() {
             val act: MainActivity = activity as MainActivity
             act.replaceFragments(R.id.navigationSearch, View.VISIBLE);
         }
+
+        val back = binding.textBack
+        back.setOnClickListener {
+            val act: MainActivity = activity as MainActivity
+            act.replaceFragments(R.id.navigationCreate, View.GONE);
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
