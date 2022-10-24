@@ -3,6 +3,7 @@ package com.puma.chare.ui.createUser
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.puma.chare.MyApplication
 import com.puma.chare.models.Car
 import com.puma.chare.models.Profile
 import com.puma.chare.repository.Repository
@@ -40,6 +41,7 @@ class CreateUserViewModel : ViewModel() {
         val repo = Repository()
         viewModelScope.launch {
             val fetchedProfile: Profile = repo.postProfile(profile)
+            MyApplication().profileID = fetchedProfile.pr_Id!!
             car.ca_Owner = fetchedProfile
             val car: Car = repo.postCar(car)
             // will go bad.

@@ -71,7 +71,7 @@ class SearchAdapter (private val searchResult: List<Trip>, private val activity:
     override fun getItemCount(): Int {
         return searchResult.size
     }
-    
+
     class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val startLocation : TextView = itemView.findViewById(R.id.tripTitle)
         val endLocation : TextView = itemView.findViewById(R.id.tripTitle2)

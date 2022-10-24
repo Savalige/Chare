@@ -1,18 +1,17 @@
 package com.puma.chare
 
+import android.app.Application
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.puma.chare.databinding.ActivityMainBinding
-
-import android.content.Intent
-import android.opengl.Visibility
-import android.util.Log
-import androidx.navigation.NavController
 
 
 class MainActivity : AppCompatActivity() {
@@ -65,4 +64,8 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         navView.visibility = visibility
     }
+}
+
+class MyApplication : Application() {
+    var profileID: Int = 1
 }
