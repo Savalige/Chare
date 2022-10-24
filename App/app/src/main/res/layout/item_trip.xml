@@ -127,47 +127,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/tripicon1"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pet_icon" />
-
-    <ImageView
-        android:id="@+id/tripicon2"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tripicon1"
-        app:srcCompat="@drawable/pet_icon" />
-
-    <ImageView
-        android:id="@+id/tripicon3"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tripicon2"
-        app:srcCompat="@drawable/pet_icon" />
-
-    <ImageView
-        android:id="@+id/tripicon4"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tripicon3"
-        app:srcCompat="@drawable/pet_icon" />
-
-    <ImageView
-        android:id="@+id/tripicon5"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tripicon4"
-        app:srcCompat="@drawable/pet_icon" />
-
-    <ImageView
-        android:id="@+id/tripicon6"
-        style="@style/tripIconStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tripicon5"
-        app:srcCompat="@drawable/pet_icon" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

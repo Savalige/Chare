@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.GsonBuilder
+import com.puma.chare.MyApplication
 import com.puma.chare.models.Profile
 import com.puma.chare.repository.Repository
 import com.puma.chare.ui.Network
@@ -20,7 +21,7 @@ class ProfileViewModel() : ViewModel() {
         val repository = Repository()
 
         return viewModelScope.launch {
-            val response = repository.getProfile("1")
+            val response = repository.getProfile(MyApplication().profileID.toString())
             profile.value = response
         }
     }

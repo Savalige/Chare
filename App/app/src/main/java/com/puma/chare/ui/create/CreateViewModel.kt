@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.puma.chare.MyApplication
 import com.puma.chare.models.Car
 import com.puma.chare.models.Preference
 import com.puma.chare.models.Profile
@@ -59,7 +60,7 @@ class CreateViewModel : ViewModel() {
 
     fun submitForm() {
         val profile = Profile()
-        profile.pr_Id = 1
+        profile.pr_Id = MyApplication().profileID
         trip.tr_Driver = profile
 
         val repo = Repository()
