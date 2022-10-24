@@ -44,7 +44,6 @@ class CreateUserViewModel : ViewModel() {
             MyApplication().profileID = fetchedProfile.pr_Id!!
             car.ca_Owner = fetchedProfile
             val car: Car = repo.postCar(car)
-            // will go bad.
         }
     }
 }

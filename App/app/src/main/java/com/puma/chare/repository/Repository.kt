@@ -32,6 +32,19 @@ class Repository {
         return RetrofitInstance.api.postCar(body)
     }
 
+    suspend fun postTrip(trip: Trip): Trip {
+        val gson = Gson()
+        val body: RequestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("tripdata", gson.toJson(trip))
+            .build()
+        return RetrofitInstance.api.postTrip(body)
+    }
+
+    suspend fun getCarFromProfile(id: String): List<Car> {
+        return RetrofitInstance.api.getCarFromProfile(id)
+    }
+
     suspend fun getTripsFromSearch(start: String, end: String, datetime: Instant, ): ArrayList<Trip> {
         return RetrofitInstance.api.getTripsFromSearch(start, end, datetime.toString())
     }
