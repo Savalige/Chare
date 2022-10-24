@@ -55,12 +55,17 @@ class SearchAdapter (private val searchResult: List<Trip>, private val activity:
 
         val date = Date.from(instant)
 
+        var minutes = instant.atZone(ZoneOffset.UTC).minute.toString()
+        if(minutes.toInt() < 10){
+            minutes = "0$minutes"
+        }
+
         holder.startLocation.text = path[0]
         holder.endLocation.text = path.last()
         holder.availableSeats.text = currentItem.tr_AvaliableSeats.toString()
         holder.date.text = date.date.toString() + " " + months[date.month]
-        holder.time.text = instant.atZone(ZoneOffset.ofHours(2)).hour.toString() + ":" + instant.atZone(ZoneOffset.UTC).minute
-        holder.cost.text = currentItem.tr_Price.toInt().toString() + "kr"
+        holder.time.text = instant.atZone(ZoneOffset.ofHours(2)).hour.toString() + ":" + minutes
+        holder.cost.text = (currentItem.tr_Price.toInt() * 13).toString() + "kr"
         holder.itemView.setOnClickListener {
             ViewModelProvider(activity)[TripDetailsViewModel::class.java].getTrip(currentItem.tr_Id!!)
             val act: MainActivity = activity
@@ -79,7 +84,7 @@ class SearchAdapter (private val searchResult: List<Trip>, private val activity:
         val time : TextView = itemView.findViewById(R.id.tripTime)
         val availableSeats : TextView = itemView.findViewById(R.id.tripSeatsAvailable)
         val cost : TextView = itemView.findViewById(R.id.tripCost)
-        val preferenceList : ImageView = itemView.findViewById(R.id.tripicon1)
+        //val preferenceList : ImageView = itemView.findViewById(R.id.tripicon1)
     }
 
 }

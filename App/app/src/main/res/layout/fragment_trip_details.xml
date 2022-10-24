@@ -619,26 +619,17 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/imageView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView31"
-                    app:srcCompat="@drawable/pet_icon"
-                    app:tint="@color/Black" />
+
 
                 <TextView
                     android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/pets_allowed"
+                    android:text="Inga preferenser"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall.Chare"
                     android:textColor="@color/Black"
-                    app:layout_constraintStart_toEndOf="@+id/imageView24"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
