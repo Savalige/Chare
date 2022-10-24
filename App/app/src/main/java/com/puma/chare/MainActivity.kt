@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -59,8 +60,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun replaceFragments(id: Int, visibility : Int) {
+    public fun replaceFragments(id: Int, visibility : Int = View.VISIBLE) {
         navController.navigate(id)
+        val navView: BottomNavigationView = binding.navView
+        navView.visibility = visibility
+    }
+
+    public fun backFragments(visibility : Int = View.VISIBLE) {
+        this.onBackPressed()
         val navView: BottomNavigationView = binding.navView
         navView.visibility = visibility
     }
