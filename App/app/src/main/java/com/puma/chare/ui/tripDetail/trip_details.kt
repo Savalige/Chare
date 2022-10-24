@@ -81,7 +81,7 @@ class trip_details : Fragment() {
                 setText(R.id.textView26, destinations[1])
                 setText(R.id.textView19, datetime[0])
                 setText(R.id.textView20, datetime[1])
-                setText(R.id.textView28, trip.tr_Price.roundToInt().toString())
+                setText(R.id.textView28, (trip.tr_Price.roundToInt()*13).toString())
                 setText(R.id.textView21, trip.tr_Car!!.ca_Model)
                 setText(R.id.textView22, trip.tr_AvaliableSeats.toString())
             }
